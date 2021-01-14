@@ -326,3 +326,31 @@ if [ -d $packagedir ]; then
 compile
 fi
 done
+
+# List Xorg Video Drivers
+for package in $(grep -v '^#' $APP_LISTING/XorgVideoDrivers.md5 | awk '{print $2}')
+do
+packagedir=${package%.tar.*}
+typearchive=${package#*.tar.*}
+export ALSY_XORG_APP_CONFIG_ARCHIVE_TYPE="$typearchive"
+if [ ! -d $packagedir ]; then
+  mkdir -p $packagedir
+  if [ -f $package ]; then
+    mv -v $package $packagedir
+  fi 
+  cp $APP_MAKEFILE/proto-Makefile.am $packagedir/Makefile.am
+  cp $APP_CONFIG/proto-video-driver-config.sh $packagedir/config.sh
+  case $packagedir in
+  xf86-video-intel* )
+    cp -r $APP_CONFIG/xf86-video-intel-20200817.sh $packagedir/config.sh
+  ;;
+  xf86-video* )
+    cp -r $APP_CONFIG/xf86-video-config.sh $packagedir/config.sh
+  ;;  
+  esac
+fi
+
+if [ -d $packagedir ]; then
+compile
+fi
+done
