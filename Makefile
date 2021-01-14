@@ -1,3 +1,4 @@
+#!/bin/make
 .PHONY: all install 
 .IGNORE: clean
 XORG_PREFIX="/usr/X11R7"
