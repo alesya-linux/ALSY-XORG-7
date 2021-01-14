@@ -18,3 +18,7 @@ libpng-1.6.37, zlib-1.2.11 и другими, чтобы узнать подро
 1. ./config.sh
 2. make
 3. su -c "make install"
+
+# Префикс установки указывается в файле config.sh
+
+1. export XORG_PREFIX="/usr/src/tools/XORG-7"
