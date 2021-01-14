@@ -21,13 +21,18 @@ export XORGPREFIX="$XORG_PREFIX"
 export XORGCONFIG="$XORG_CONFIG"
 
 MD5SUMFILE=""
+APPLICATION_SITE=""
 INSTALL_APPLICATION=""
+
+APP_LISTING=".APP_LISTING"
 APP_CONFIG=".APP_CONFIG"
 APP_MAKEFILE=".APP_MAKEFILE"
 
+echo "Installation Log File: $(date)" > install_log.txt
+
 Add_Log()
 {
-  echo "$MD5SUMFILE  $INSTALL_APPLICATION" >> install_log.txt
+  echo "$INSTALL_APPLICATION: $MD5SUMFILE" >> $APPLICATION_SITE/install_log.txt
 }
 
 check_last()
@@ -51,6 +56,10 @@ PATH="$LASTPATH"
 
 compile()
 {
+  APPLICATION_SITE="$PWD"
+  MD5SUMFILE="$(md5sum $APPLICATION_SITE/$packagedir/$package)"
+  INSTALL_APPLICATION="$packagedir"
+  
 pushd $packagedir
 ./config.sh
 check_last "config"
@@ -60,12 +69,11 @@ make_install
 popd
 }
 
-for package in $(grep -v '^#' XORG-7.md5 | awk '{print $2}')
-do
-  MD5SUMFILE="$(md5sum $package)"
-  INSTALL_APPLICATION="$package"
+for package in $(grep -v '^#' $APP_LISTING/XORG-7.md5 | awk '{print $2}')
+do  
   packagedir=${package%.tar.*}
   typearchive=${package#*.tar.*}
+  
 export ALSY_XORG_APP_CONFIG_ARCHIVE_TYPE="$typearchive"
 if [ ! -d $packagedir ]; then
   mkdir -p $packagedir
@@ -153,12 +161,12 @@ if [ ! -d $packagedir ]; then
 fi
 
 if [ -d $packagedir ]; then
-compile
+  compile
 fi
 done
 
 # List Xorg Application
-for package in $(grep -v '^#' app-7.md5 | awk '{print $2}')
+for package in $(grep -v '^#' $APP_LISTING/app-7.md5 | awk '{print $2}')
 do
 packagedir=${package%.tar.*}
 typearchive=${package#*.tar.*}
@@ -180,7 +188,7 @@ fi
 done
 
 # List Xorg Font
-for package in $(grep -v '^#' font-7.md5 | awk '{print $2}')
+for package in $(grep -v '^#' $APP_LISTING/font-7.md5 | awk '{print $2}')
 do
 packagedir=${package%.tar.*}
 typearchive=${package#*.tar.*}
@@ -274,3 +282,47 @@ echo "--- check fixesproto......"
 pkg-config --modversion fixesproto
 echo "--- check xbitmaps......"
 pkg-config --modversion xbitmaps
+echo "--- check xorg-server......"
+pkg-config --modversion xorg-server
+
+# List Xorg Input Drivers
+for package in $(grep -v '^#' $APP_LISTING/XorgInputDrivers.md5 | awk '{print $2}')
+do
+packagedir=${package%.tar.*}
+typearchive=${package#*.tar.*}
+export ALSY_XORG_APP_CONFIG_ARCHIVE_TYPE="$typearchive"
+if [ ! -d $packagedir ]; then
+  mkdir -p $packagedir
+  if [ -f $package ]; then
+    mv -v $package $packagedir
+  fi
+  cp $APP_CONFIG/freedesktop_soft-config.sh $packagedir/config.sh
+  cp $APP_MAKEFILE/proto-Makefile.am $packagedir/Makefile.am
+  case $packagedir in
+  xf86* )
+    cp -r $APP_CONFIG/freedesktop_x86-input-config.sh $packagedir/config.sh
+  ;;
+  Linux-PAM* )
+    cp -r $APP_CONFIG/Linux-PAM-config.sh $packagedir/config.sh
+  ;;
+  systemd* )
+    cp -r $APP_CONFIG/systemd-config.sh $packagedir/config.sh
+    cp -r $APP_MAKEFILE/meson-Makefile.am $packagedir/Makefile.am
+  ;;
+  libtirpc* )
+    cp -r $APP_CONFIG/libtirpc-config.sh $packagedir/config.sh
+  ;;
+  mtdev* )
+    cp -r $APP_CONFIG/mtdev-config.sh $packagedir/config.sh
+  ;;
+  libinput* )
+    cp -r $APP_CONFIG/libinput-config.sh $packagedir/config.sh
+    cp -r $APP_MAKEFILE/meson-Makefile.am $packagedir/Makefile.am
+  ;;
+  esac
+fi
+
+if [ -d $packagedir ]; then
+compile
+fi
+done
