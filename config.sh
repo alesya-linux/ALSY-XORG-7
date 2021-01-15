@@ -12,6 +12,7 @@ export PATH="$XORG_PREFIX/bin:$PATH"
 
 LIBRARY_PATH=""
 C_INCLUDE_PATH=""
+CPLUS_INCLUDE_PATH="$C_INCLUDE_PATH"
 LIBRARY_PATH="$XORG_PREFIX/lib:$LIBRARY_PATH"
 C_INCLUDE_PATH="$XORG_PREFIX/include:$C_INCLUDE_PATH"
 CPLUS_INCLUDE_PATH="$XORG_PREFIX/include:$CPLUS_INCLUDE_PATH"
@@ -27,6 +28,14 @@ INSTALL_APPLICATION=""
 APP_LISTING=".APP_LISTING"
 APP_CONFIG=".APP_CONFIG"
 APP_MAKEFILE=".APP_MAKEFILE"
+APP_COMPILE="build/compile"
+
+ETAP1_FLAG=" " # This is compile for file XORG-7.md5
+ETAP2_FLAG=" " # This is compile for file app-7.md5 
+ETAP3_FLAG=" " # This is compile for file font-7.md5 
+ETAP4_FLAG="X" # This is compile for file XorgInputDrivers.md5
+ETAP5_FLAG=" " # This is compile for file XorgVideoDrivers.md5
+ETAP6_FLAG=" " # This is compile for file Xorg-Legacy.md5
 
 echo "Installation Log File: $(date)" > install_log.txt
 
@@ -57,7 +66,7 @@ PATH="$LASTPATH"
 compile()
 {
   APPLICATION_SITE="$PWD"
-  MD5SUMFILE="$(md5sum $APPLICATION_SITE/$packagedir/$package)"
+  MD5SUMFILE="$(md5sum $APPLICATION_SITE/$APP_COMPILE/$packagedir/$package)"
   INSTALL_APPLICATION="$packagedir"
   
 pushd $packagedir
@@ -69,101 +78,109 @@ make_install
 popd
 }
 
+if [ "$ETAP1_FLAG" == "X" ]; then
+
 for package in $(grep -v '^#' $APP_LISTING/XORG-7.md5 | awk '{print $2}')
 do  
   packagedir=${package%.tar.*}
   typearchive=${package#*.tar.*}
   
 export ALSY_XORG_APP_CONFIG_ARCHIVE_TYPE="$typearchive"
-if [ ! -d $packagedir ]; then
-  mkdir -p $packagedir
+if [ ! -d $APP_COMPILE/$packagedir ]; then
+  mkdir -p $APP_COMPILE/$packagedir
   if [ -f $package ]; then
-    mv -v $package $packagedir
+    mv -v $package $APP_COMPILE/$packagedir
   fi
-  cp $APP_MAKEFILE/proto-Makefile.am $packagedir/Makefile.am
+  cp $APP_MAKEFILE/proto-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
   case $packagedir in
   util-linux* )
-    cp -r $APP_CONFIG/util-linux-config.sh $packagedir/config.sh
+    cp -r $APP_CONFIG/util-linux-config.sh $APP_COMPILE/$packagedir/config.sh
   ;;
   freetype-2* )
-    cp -r $APP_CONFIG/freetype-config.sh $packagedir/config.sh
+    cp -r $APP_CONFIG/freetype-config.sh $APP_COMPILE/$packagedir/config.sh
   ;;
   freetype2* )
-    cp -r $APP_CONFIG/freetype2-config.sh $packagedir/config.sh
+    cp -r $APP_CONFIG/freetype2-config.sh $APP_COMPILE/$packagedir/config.sh
   ;;
   harfbuzz* )
-    cp -r $APP_CONFIG/harfbuzz-config.sh $packagedir/config.sh  
+    cp -r $APP_CONFIG/harfbuzz-config.sh $APP_COMPILE/$packagedir/config.sh  
   ;;
   fontconfig* )
-    cp -r $APP_CONFIG/fontconfig.sh $packagedir/config.sh
+    cp -r $APP_CONFIG/fontconfig.sh $APP_COMPILE/$packagedir/config.sh
   ;;
   xcb-util* )
-    cp $APP_CONFIG/xcb-util-config.sh $packagedir/config.sh
+    cp $APP_CONFIG/xcb-util-config.sh $APP_COMPILE/$packagedir/config.sh
   ;;
   libdrm* )
-    cp -r $APP_CONFIG/libdrm-config.sh $packagedir/config.sh
-    cp -r $APP_MAKEFILE/meson-Makefile.am $packagedir/Makefile.am
+    cp -r $APP_CONFIG/libdrm-config.sh $APP_COMPILE/$packagedir/config.sh
+    cp -r $APP_MAKEFILE/meson-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
   ;;
   libepoxy* )
-    cp -r $APP_CONFIG/libepoxy-config.sh $packagedir/config.sh
-    cp -r $APP_MAKEFILE/meson-Makefile.am $packagedir/Makefile.am
+    cp -r $APP_CONFIG/libepoxy-config.sh $APP_COMPILE/$packagedir/config.sh
+    cp -r $APP_MAKEFILE/meson-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
   ;;
   libpng* )
-    cp -r $APP_CONFIG/libpng-config.sh $packagedir/config.sh
+    cp -r $APP_CONFIG/libpng-config.sh $APP_COMPILE/$packagedir/config.sh
   ;;
   lib* )
-    cp $APP_CONFIG/xorglib-config.sh $packagedir/config.sh
+    cp $APP_CONFIG/xorglib-config.sh $APP_COMPILE/$packagedir/config.sh
   ;;
   xtrans* )
-    cp $APP_CONFIG/xorglib-config.sh $packagedir/config.sh
+    cp $APP_CONFIG/xorglib-config.sh $APP_COMPILE/$packagedir/config.sh
   ;;
   proto* )
-    cp $APP_CONFIG/proto-config.sh $packagedir/config.sh
+    cp $APP_CONFIG/proto-config.sh $APP_COMPILE/$packagedir/config.sh
   ;;
   glproto* )
-    cp $APP_CONFIG/proto-config.sh $packagedir/config.sh
+    cp $APP_CONFIG/proto-config.sh $APP_COMPILE/$packagedir/config.sh
   ;;
   util* )
-    cp $APP_CONFIG/util-config.sh $packagedir/config.sh
+    cp $APP_CONFIG/util-config.sh $APP_COMPILE/$packagedir/config.sh
   ;;
   Python* )
-    cp $APP_CONFIG/python-config.sh $packagedir/config.sh
+    cp $APP_CONFIG/python-config.sh $APP_COMPILE/$packagedir/config.sh
   ;;  
   mesa* )
-    cp $APP_CONFIG/mesa-config.sh $packagedir/config.sh
-    cp -r $APP_MAKEFILE/meson-Makefile.am $packagedir/Makefile.am
+    cp $APP_CONFIG/mesa-config.sh $APP_COMPILE/$packagedir/config.sh
+    cp -r $APP_MAKEFILE/meson-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
   ;;
   randr* )
-    cp $APP_CONFIG/proto-config.sh $packagedir/config.sh
+    cp $APP_CONFIG/proto-config.sh $APP_COMPILE/$packagedir/config.sh
   ;;
   xineramaproto* )
-    cp $APP_CONFIG/proto-config.sh $packagedir/config.sh
+    cp $APP_CONFIG/proto-config.sh $APP_COMPILE/$packagedir/config.sh
   ;;
   xproto* )
-    cp $APP_CONFIG/proto-config.sh $packagedir/config.sh
+    cp $APP_CONFIG/proto-config.sh $APP_COMPILE/$packagedir/config.sh
   ;;
   xorgproto* )
-    cp $APP_CONFIG/proto-config.sh $packagedir/config.sh
+    cp $APP_CONFIG/proto-config.sh $APP_COMPILE/$packagedir/config.sh
   ;;
   xcb-proto* )
-    cp $APP_CONFIG/proto-config.sh $packagedir/config.sh
+    cp $APP_CONFIG/proto-config.sh $APP_COMPILE/$packagedir/config.sh
   ;;
   nettle* )  
-    cp $APP_CONFIG/nettle-config.sh $packagedir/config.sh
+    cp $APP_CONFIG/nettle-config.sh $APP_COMPILE/$packagedir/config.sh
   ;;
   xbitmaps* )
-    cp $APP_CONFIG/data-config.sh $packagedir/config.sh
+    cp $APP_CONFIG/data-config.sh $APP_COMPILE/$packagedir/config.sh
   ;;
   zlib* )
-    cp $APP_CONFIG/zlib-config.sh $packagedir/config.sh
+    cp $APP_CONFIG/zlib-config.sh $APP_COMPILE/$packagedir/config.sh
   ;;
   esac
 fi
 
-if [ -d $packagedir ]; then
-  compile
+if [ -d $APP_COMPILE/$packagedir ]; then
+ pushd $APP_COMPILE
+ compile
+ popd
 fi
 done
+
+fi
+
+if [ "$ETAP2_FLAG" == "X" ]; then
 
 # List Xorg Application
 for package in $(grep -v '^#' $APP_LISTING/app-7.md5 | awk '{print $2}')
@@ -171,21 +188,27 @@ do
 packagedir=${package%.tar.*}
 typearchive=${package#*.tar.*}
 export ALSY_XORG_APP_CONFIG_ARCHIVE_TYPE="$typearchive"
-if [ ! -d $packagedir ]; then
-  mkdir -p $packagedir
-  cp $APP_CONFIG/xorg-app-config.sh $packagedir/config.sh
+if [ ! -d $APP_COMPILE/$packagedir ]; then
+  mkdir -p $APP_COMPILE/$packagedir
+  cp $APP_CONFIG/xorg-app-config.sh $APP_COMPILE/$packagedir/config.sh
   case $packagedir in 
   xcursor-themes* )
-    cp -r $APP_CONFIG/data-config.sh $packagedir/config.sh
+    cp -r $APP_CONFIG/data-config.sh $APP_COMPILE/$packagedir/config.sh
   ;;
   esac  
-  cp $APP_MAKEFILE/proto-Makefile.am $packagedir/Makefile.am
+  cp $APP_MAKEFILE/proto-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
 fi
       
-if [ -d $packagedir ]; then
-compile
+if [ -d $APP_COMPILE/$packagedir ]; then
+  pushd $APP_COMPILE
+  compile
+  popd
 fi
 done
+
+fi
+
+if [ "$ETAP3_FLAG" == "X" ]; then
 
 # List Xorg Font
 for package in $(grep -v '^#' $APP_LISTING/font-7.md5 | awk '{print $2}')
@@ -240,6 +263,8 @@ compile
 fi
 done
 
+fi
+
 # TEST INSTALL... 
 echo $PKG_CONFIG_PATH
 echo "--- check glproto......"
@@ -285,50 +310,81 @@ pkg-config --modversion xbitmaps
 echo "--- check xorg-server......"
 pkg-config --modversion xorg-server
 
+if [ "$ETAP4_FLAG" == "X" ]; then
+
 # List Xorg Input Drivers
 for package in $(grep -v '^#' $APP_LISTING/XorgInputDrivers.md5 | awk '{print $2}')
 do
 packagedir=${package%.tar.*}
 typearchive=${package#*.tar.*}
 export ALSY_XORG_APP_CONFIG_ARCHIVE_TYPE="$typearchive"
-if [ ! -d $packagedir ]; then
-  mkdir -p $packagedir
-  if [ -f $package ]; then
-    mv -v $package $packagedir
+if [ ! -d $APP_COMPILE/$packagedir ]; then
+  mkdir -p $APP_COMPILE/$packagedir
+  if [ -f $APP_COMPILE/$package ]; then
+    mv -v $package $APP_COMPILE/$packagedir
   fi
-  cp $APP_CONFIG/freedesktop_soft-config.sh $packagedir/config.sh
-  cp $APP_MAKEFILE/proto-Makefile.am $packagedir/Makefile.am
-  case $packagedir in
-  xf86-input-wacom* )
-    cp -r $APP_CONFIG/x86-wacom-input.config.sh $packagedir/config.sh
-  ;;
-  xf86* )
-    cp -r $APP_CONFIG/freedesktop_x86-input-config.sh $packagedir/config.sh
-  ;;
-  Linux-PAM* )
-    cp -r $APP_CONFIG/Linux-PAM-config.sh $packagedir/config.sh
-  ;;
-  systemd* )
-    cp -r $APP_CONFIG/systemd-config.sh $packagedir/config.sh
-    cp -r $APP_MAKEFILE/meson-Makefile.am $packagedir/Makefile.am
-  ;;
-  libtirpc* )
-    cp -r $APP_CONFIG/libtirpc-config.sh $packagedir/config.sh
-  ;;
-  mtdev* )
-    cp -r $APP_CONFIG/mtdev-config.sh $packagedir/config.sh
-  ;;
-  libinput* )
-    cp -r $APP_CONFIG/libinput-config.sh $packagedir/config.sh
-    cp -r $APP_MAKEFILE/meson-Makefile.am $packagedir/Makefile.am
-  ;;
-  esac
 fi
 
-if [ -d $packagedir ]; then
-compile
+
+  case $packagedir in
+  xf86-input-wacom* )
+    cp -r $APP_CONFIG/x86-wacom-input.config.sh $APP_COMPILE/$packagedir/config.sh
+    cp $APP_MAKEFILE/proto-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
+  ;;
+  xf86* )
+    cp -r $APP_CONFIG/freedesktop_x86-input-config.sh $APP_COMPILE/$packagedir/config.sh
+    cp $APP_MAKEFILE/proto-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
+  ;;
+  Linux-PAM* )
+    cp -r $APP_CONFIG/Linux-PAM-config.sh $APP_COMPILE/$packagedir/config.sh
+    cp -r $APP_MAKEFILE/pam-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
+  ;;
+  systemd* )
+    cp -r $APP_CONFIG/systemd-config.sh $APP_COMPILE/$packagedir/config.sh
+    cp -r $APP_MAKEFILE/meson-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
+  ;;
+  libtirpc* )
+    cp -r $APP_CONFIG/libtirpc-config.sh $APP_COMPILE/$packagedir/config.sh
+    cp $APP_MAKEFILE/proto-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
+  ;;
+  mtdev* )
+    cp -r $APP_CONFIG/mtdev-config.sh $APP_COMPILE/$packagedir/config.sh
+    cp $APP_MAKEFILE/proto-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
+  ;;
+  libinput* )
+    cp -r $APP_CONFIG/libinput-config.sh $APP_COMPILE/$packagedir/config.sh
+    cp -r $APP_MAKEFILE/meson-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
+  ;;
+  libcap1* )
+    echo "---------------$APP_CONFIG"
+    cp -r $APP_CONFIG/libcap1-config.sh $APP_COMPILE/$packagedir/config.sh
+    cp -r $APP_MAKEFILE/libcap1-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
+  ;;
+  libcap2* )
+    cp -r $APP_CONFIG/libcap2-config.sh $APP_COMPILE/$packagedir/config.sh
+    cp -r $APP_MAKEFILE/libcap2-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
+  ;;
+  libpcap* )
+    cp -r $APP_CONFIG/libpcap-config.sh $APP_COMPILE/$packagedir/config.sh
+    cp -r $APP_MAKEFILE/libpcap-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
+  ;;
+  libevdev* )
+    cp $APP_CONFIG/freedesktop_soft-config.sh $APP_COMPILE/$packagedir/config.sh
+    cp $APP_MAKEFILE/proto-Makefile.am $APP_COMPILE/$packagedir/Makefile.am  
+  ;;
+  esac
+
+
+if [ -d $APP_COMPILE/$packagedir ]; then
+ pushd $APP_COMPILE
+ compile
+ popd
 fi
 done
+
+fi
+
+if [ "$ETAP5_FLAG" == "X" ]; then
 
 # List Xorg Video Drivers
 for package in $(grep -v '^#' $APP_LISTING/XorgVideoDrivers.md5 | awk '{print $2}')
@@ -336,27 +392,33 @@ do
 packagedir=${package%.tar.*}
 typearchive=${package#*.tar.*}
 export ALSY_XORG_APP_CONFIG_ARCHIVE_TYPE="$typearchive"
-if [ ! -d $packagedir ]; then
-  mkdir -p $packagedir
-  if [ -f $package ]; then
-    mv -v $package $packagedir
+if [ ! -d $APP_COMPILE/$packagedir ]; then
+  mkdir -p $APP_COMPILE/$packagedir
+  if [ -f $APP_COMPILE/$package ]; then
+    mv -v $package $APP_COMPILE/$packagedir
   fi 
-  cp $APP_MAKEFILE/proto-Makefile.am $packagedir/Makefile.am
-  cp $APP_CONFIG/proto-video-driver-config.sh $packagedir/config.sh
+  cp $APP_MAKEFILE/proto-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
+  cp $APP_CONFIG/proto-video-driver-config.sh $APP_COMPILE/$packagedir/config.sh
   case $packagedir in
   xf86-video-intel* )
-    cp -r $APP_CONFIG/xf86-video-intel-20200817.sh $packagedir/config.sh
+    cp -r $APP_CONFIG/xf86-video-intel-20200817.sh $APP_COMPILE/$packagedir/config.sh
   ;;
   xf86-video* )
-    cp -r $APP_CONFIG/xf86-video-config.sh $packagedir/config.sh
+    cp -r $APP_CONFIG/xf86-video-config.sh $APP_COMPILE/$packagedir/config.sh
   ;;  
   esac
 fi
 
-if [ -d $packagedir ]; then
-compile
+if [ -d $APP_COMPILE/$packagedir ]; then
+ pushd $APP_COMPILE
+ compile
+ popd
 fi
 done
+
+fi
+
+if [ "$ETAP6_FLAG" == "X" ]; then
 
 # Xorg Legacy Font
 
@@ -402,3 +464,5 @@ if [ -d $packagedir ]; then
   ldconfig
 fi
 done
+
+fi
