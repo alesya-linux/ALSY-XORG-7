@@ -61,3 +61,4 @@ zlib-1.2.11 и другими, чтобы узнать подробнее
 8. GNU Make >= 4.3
 9. GNU libtool >= 2.4.6
 10. GNU Autoconf >= 2.7
+11. pkg-config >= 0.29
