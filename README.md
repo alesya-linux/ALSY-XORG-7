@@ -47,3 +47,13 @@ zlib-1.2.11 и другими, чтобы узнать подробнее
 # Префикс установки указывается в файле config.sh
 
 1. export XORG_PREFIX="/usr/src/tools/XORG-7"
+
+# Требования к ПО
+
+1. ОС Linux GNU
+2. glibc >= 2.19
+3. gcc >= 4.7
+4. binutils >= 2.19
+4. python2 > 2.7
+5. python3 > 3
+6. Ninja v1.5 or newer
