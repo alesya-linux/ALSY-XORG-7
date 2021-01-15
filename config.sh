@@ -1,4 +1,12 @@
 #!/bin/bash
+
+ETAP1_FLAG="X" # This is Flag compile for file XORG-7.md5
+ETAP2_FLAG="X" # This is Flag compile for file app-7.md5 
+ETAP3_FLAG="X" # This is Flag compile for file font-7.md5 
+ETAP4_FLAG="X" # This is Flag compile for file XorgInputDrivers.md5
+ETAP5_FLAG="X" # This is Flag compile for file XorgVideoDrivers.md5
+ETAP6_FLAG="X" # This is Flag compile for file Xorg-Legacy.md5
+
 export XORG_PREFIX="/usr/src/tools/XORG-7"
 export XORG_CONFIG="--prefix=$XORG_PREFIX              \
                     --sysconfdir=$XORG_PREFIX/etc      \
@@ -29,13 +37,6 @@ APP_LISTING=".APP_LISTING"
 APP_CONFIG=".APP_CONFIG"
 APP_MAKEFILE=".APP_MAKEFILE"
 APP_COMPILE="build/compile"
-
-ETAP1_FLAG=" " # This is Flag compile for file XORG-7.md5
-ETAP2_FLAG=" " # This is Flag compile for file app-7.md5 
-ETAP3_FLAG=" " # This is Flag compile for file font-7.md5 
-ETAP4_FLAG="X" # This is Flag compile for file XorgInputDrivers.md5
-ETAP5_FLAG=" " # This is Flag compile for file XorgVideoDrivers.md5
-ETAP6_FLAG=" " # This is Flag compile for file Xorg-Legacy.md5
 
 echo "Installation Log File: $(date)" > install_log.txt
 
