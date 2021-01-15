@@ -1,0 +1,9 @@
+#!/bin/make
+compile:
+	cd ${package_site} && cp -a *.${package_type} /usr/local/share/fonts/X11/${package_xtype}/
+install:
+	cd ${package_site} && cp -a *.${package_type} /usr/local/share/fonts/X11/${package_xtype}/
+	cd ${package_site} && cp -a *.${package_type} /share/fonts/X11/${package_xtype}/
+	cd ${package_site} && cp -a *.${package_type} /usr/share/fonts/X11/${package_xtype}/
+	mkdir -p ${XORG_PREFIX}/share/fonts/X11/${package_xtype}/
+	cd ${package_site} && cp -a *.${package_type} ${XORG_PREFIX}/share/fonts/X11/${package_xtype}/
