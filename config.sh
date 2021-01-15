@@ -47,7 +47,7 @@ make_install()
 {
 LASTPATH="$PATH"
 PATH="$SAVEPATH"
-su -c "make install"
+make install
 check_last "make install"
 # Add Log
 Add_Log
@@ -299,6 +299,9 @@ if [ ! -d $packagedir ]; then
   cp $APP_CONFIG/freedesktop_soft-config.sh $packagedir/config.sh
   cp $APP_MAKEFILE/proto-Makefile.am $packagedir/Makefile.am
   case $packagedir in
+  xf86-input-wacom* )
+    cp -r $APP_CONFIG/x86-wacom-input.config.sh $packagedir/config.sh
+  ;;
   xf86* )
     cp -r $APP_CONFIG/freedesktop_x86-input-config.sh $packagedir/config.sh
   ;;
@@ -352,5 +355,50 @@ fi
 
 if [ -d $packagedir ]; then
 compile
+fi
+done
+
+# Xorg Legacy Font
+
+#mkdir -p legacy &&
+#cd    legacy &&
+#grep -v '^#' ../$APP_LISTING/legacy.dat | awk '{print $2$3}' | wget -i- -c \
+#     -B https://www.x.org/pub/individual/ &&
+#grep -v '^#' ../$APP_LISTING/legacy.dat | awk '{print $1 " " $3}' > ../$APP_LISTING/Xorg-Legacy.md5 &&
+#md5sum -c ../$APP_LISTING/Xorg-Legacy.md5 && cd ..
+
+for package in $(grep -v '^#' $APP_LISTING/Xorg-Legacy.md5 | awk '{print $2}')
+do
+  packagedir=${package%.tar.*}
+  typearchive=${package#*.tar.*}
+  case $packagedir in
+  xterm* )
+    packagedir=${package%.tgz}
+    typearchive=${package#*.tgz}
+  ;;
+  esac
+export ALSY_XORG_APP_CONFIG_ARCHIVE_TYPE="$typearchive"
+if [ ! -d $packagedir ]; then
+  mkdir -p $packagedir  
+fi
+
+if [ -f legacy/$package ]; then
+  cp -rfv legacy/$package $packagedir
+fi 
+  
+cp $APP_MAKEFILE/proto-Makefile.am $packagedir/Makefile.am
+cp $APP_CONFIG/Xorg-Legacy-Font-config.sh $packagedir/config.sh
+export APP_SITE="app"
+ case $packagedir in
+ font* )
+   export APP_SITE="font"
+ ;;
+ xterm* )
+   cp $APP_CONFIG/Xorg-xterm-config.sh $packagedir/config.sh
+ ;;
+ esac
+if [ -d $packagedir ]; then
+  compile
+  ldconfig
 fi
 done
