@@ -42,15 +42,20 @@ if [ $? -eq 0 ]; then
     pushd $app &&    
     if [[ -f $sapp/configure.ac && ! -x $sapp/configure ]]; then
       cd $sapp   &&
-      libtoolize && 
+      libtoolize &&
+      sed -e /service_DATA/d \
+      -i modules/pam_namespace/Makefile.am &&
       autoreconf -fiv &&
       cd ..
     fi &&
     if [ -x $sapp/configure ]; then    
       sed -e 's/dummy elinks/dummy lynx/'                                    \
           -e 's/-no-numbering -no-references/-force-html -nonumbers -stdin/' \
-          -i $sapp/configure &&
-      ./$sapp/configure $XORG_CONFIG && popd
+          -i $sapp/configure &&      
+      ./$sapp/configure $XORG_CONFIG \
+      --libdir=$XORG_PREFIX/usr/lib \
+      --enable-securedir=$XORG_PREFIX/lib/security \
+      --docdir=$XORG_PREFIX/share/doc/Linux-PAM-1.5.1 && popd
     fi 
   fi
 else

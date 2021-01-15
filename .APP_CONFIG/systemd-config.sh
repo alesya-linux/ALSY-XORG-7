@@ -48,7 +48,13 @@ if [ $? -eq 0 ]; then
     fi &&
     if [ -x $sapp/configure ]; then
        filedwnld="http://www.linuxfromscratch.org/patches/blfs/svn/systemd-247-upstream_fixes-1.patch"
-       wget $filedwnld      
+       wget $filedwnld 
+       if [ $? -ne 0 ]; then
+         cp -a ../../../../APP_PATCHES/systemd-247-upstream_fixes-1.patch ../systemd-247-upstream_fixes-1.patch
+         if [ $? -ne 0 ]; then
+           exit 1
+         fi
+       fi
        if [ $? -eq 0 ]; then
          cd $sapp && patch -Np1 -i ../systemd-247-upstream_fixes-1.patch
          if [ $? -eq 0 ]; then           
@@ -62,7 +68,7 @@ if [ $? -eq 0 ]; then
                   -Dldconfig=false                            \
                   -Dman=auto                                  \
                   -Drootprefix=                               \
-                  -Drootlibdir=/lib                           \
+                  -Drootlibdir=$XORG_PREFIX/lib               \
                   -Dsplit-usr=true                            \
                   -Dsysusers=false                            \
                   -Drpmmacrosdir=no                           \

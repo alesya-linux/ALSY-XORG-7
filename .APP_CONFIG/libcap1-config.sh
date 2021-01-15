@@ -7,16 +7,20 @@ as_root()
   fi
 }
 
+
 app="${PWD##*/}"
 version="${app##*-}"
 app="${app%-*}"
-arch="tar.${ALSY_XORG_APP_CONFIG_ARCHIVE_TYPE}"
+arch="tar.gz"
 sapp="$app-$version"
+app="libcap"
 
 if [ ! -f $app-$version.$arch ]; then  
-  filedwnld="https://dri.freedesktop.org/libdrm/$app-$version.$arch"
+  filedwnld="https://www.kernel.org/pub/linux/libs/security/linux-privs/libcap2/$app-$version.$arch"
   wget $filedwnld -O "$app-$version".$arch --no-check-certificate
 fi
+
+export pam="" 
 
 app="$app-$version"
 sed 's/@alsy.app.name/'$app'/g' "Makefile.am" > "Makefile"
@@ -29,8 +33,6 @@ if [ -d ../build/$app ]; then
    exit 1
  fi
 fi
-
-python -m pip install -U ninja
 
 mkdir -p ../build/$app &&
 tar -xf "$app"."$arch" -C ../build/$app
@@ -46,8 +48,6 @@ if [ $? -eq 0 ]; then
     fi &&
     if [ -x $sapp/configure ]; then    
       ./$sapp/configure $XORG_CONFIG && popd
-    elif [ -f $sapp/meson.build ]; then      
-      meson --prefix=$XORG_PREFIX $sapp
     fi 
   fi
 fi
