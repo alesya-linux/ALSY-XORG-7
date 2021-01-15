@@ -30,12 +30,12 @@ APP_CONFIG=".APP_CONFIG"
 APP_MAKEFILE=".APP_MAKEFILE"
 APP_COMPILE="build/compile"
 
-ETAP1_FLAG=" " # This is compile for file XORG-7.md5
-ETAP2_FLAG=" " # This is compile for file app-7.md5 
-ETAP3_FLAG=" " # This is compile for file font-7.md5 
-ETAP4_FLAG="X" # This is compile for file XorgInputDrivers.md5
-ETAP5_FLAG=" " # This is compile for file XorgVideoDrivers.md5
-ETAP6_FLAG=" " # This is compile for file Xorg-Legacy.md5
+ETAP1_FLAG=" " # This is Flag compile for file XORG-7.md5
+ETAP2_FLAG=" " # This is Flag compile for file app-7.md5 
+ETAP3_FLAG=" " # This is Flag compile for file font-7.md5 
+ETAP4_FLAG="X" # This is Flag compile for file XorgInputDrivers.md5
+ETAP5_FLAG=" " # This is Flag compile for file XorgVideoDrivers.md5
+ETAP6_FLAG=" " # This is Flag compile for file Xorg-Legacy.md5
 
 echo "Installation Log File: $(date)" > install_log.txt
 
@@ -66,7 +66,7 @@ PATH="$LASTPATH"
 compile()
 {
   APPLICATION_SITE="$PWD"
-  MD5SUMFILE="$(md5sum $APPLICATION_SITE/$APP_COMPILE/$packagedir/$package)"
+  MD5SUMFILE="$(md5sum $APPLICATION_SITE/$packagedir/$package)"
   INSTALL_APPLICATION="$packagedir"
   
 pushd $packagedir
