@@ -55,5 +55,9 @@ zlib-1.2.11 и другими, чтобы узнать подробнее
 3. gcc >= 4.7
 4. binutils >= 2.19
 4. python2 > 2.7
-5. python3 > 3
+5. python3 > 3.0
 6. Ninja v1.5 or newer
+7. GNU Wget >= 1.14
+8. GNU Make >= 4.3
+9. GNU libtool >= 2.4.6
+10. GNU Autoconf >= 2.7
