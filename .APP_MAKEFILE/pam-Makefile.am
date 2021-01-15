@@ -1,0 +1,11 @@
+#!/bin/make
+app="@alsy.app.name"
+compile:
+	cd ../build/${app} && make
+install:
+	cd ../build/${app} && make install
+	mkdir -p ${XORG_PREFIX}/include/security
+	cp -a ${XORG_PREFIX}/include/pam*.h ${XORG_PREFIX}/include/security
+	cp -a ${XORG_PREFIX}/include/_pam*.h ${XORG_PREFIX}/include/security
+clean:
+	rm -rfd ../build/${app}

@@ -1,0 +1,9 @@
+#!/bin/make
+app="@alsy.app.name"
+compile:
+	cd ../build/${app}/${app} && make -C pam_cap
+install:
+	cd ../build/${app}/${app} && install -v -m755 pam_cap/pam_cap.so      ${XORG_PREFIX}/lib/security
+	cd ../build/${app}/${app} && install -v -m644 pam_cap/capability.conf ${XORG_PREFIX}/etc/security
+clean:
+	rm -rfd ../build/${app}
