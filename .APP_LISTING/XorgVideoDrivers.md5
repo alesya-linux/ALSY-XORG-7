@@ -1,7 +1,7 @@
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX  glamor-egl-0.6.0.tar.gz
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX  xf86-video-amdgpu-19.1.0.tar.bz2
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX  xf86-video-ati-19.1.0.tar.bz2
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX  xf86-video-fbdev-0.5.0.tar.bz2
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX  xf86-video-intel-20200817.tar.xz
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX  xf86-video-nouveau-1.0.16.tar.bz2
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX  xf86-video-vmware-13.3.0.tar.bz2
+d9f7c45a2977a5094f81301baaa2d4ab  glamor-egl-0.6.0.tar.gz
+55ad19b858e186a2cf4e91ed832c05e7  xf86-video-amdgpu-19.1.0.tar.bz2
+6e49d3c2839582af415ceded76e626e6  xf86-video-ati-19.1.0.tar.bz2
+f07475655376be5a124d8187aacd87b6  xf86-video-fbdev-0.5.0.tar.bz2
+3203b1344cea5d0e377d1a9ff1fea871  xf86-video-intel-20200817.tar.xz
+ecd9be89d853301167e3d564c49f7a8e  xf86-video-nouveau-1.0.16.tar.bz2
+08d66d062055080ff699ab4869726ea2  xf86-video-vmware-13.3.0.tar.bz2
