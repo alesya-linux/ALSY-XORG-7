@@ -1,11 +1,12 @@
 #!/bin/bash
-ETAP1_FLAG=" " # This is Flag compile for file XORG-7.md5
-ETAP2_FLAG=" " # This is Flag compile for file app-7.md5 
+FLAGSET="X"
+ETAP1_FLAG="X" # This is Flag compile for file XORG-7.md5
+ETAP2_FLAG="X" # This is Flag compile for file app-7.md5 
 ETAP3_FLAG="X" # This is Flag compile for file font-7.md5 
-ETAP4_FLAG=" " # This is Flag compile for file XorgInputDrivers.md5
-ETAP5_FLAG=" " # This is Flag compile for file XorgVideoDrivers.md5
+ETAP4_FLAG="X" # This is Flag compile for file XorgInputDrivers.md5
+ETAP5_FLAG="X" # This is Flag compile for file XorgVideoDrivers.md5
 ETAP6_FLAG="X" # This is Flag compile for file Xorg-Legacy.md5
-ETAP6_WGET_FLAG=" "
+ETAP6_WGET_FLAG="X"
 
 export XORG_PREFIX="/usr/src/tools/XORG-7"
 export XORG_CONFIG="--prefix=$XORG_PREFIX              \
@@ -179,7 +180,7 @@ if [ -d $APP_COMPILE/$packagedir ]; then
 fi
 done
 # Снимаем флаг
-sed -i 's/ETAP1_FLAG="X"/ETAP1_FLAG=" "/' config.sh
+sed -i 's/ETAP1_FLAG="'$FLAGSET'"/ETAP1_FLAG=" "/' config.sh
 fi
 
 
@@ -209,7 +210,7 @@ if [ -d $APP_COMPILE/$packagedir ]; then
 fi
 done
 # Снимаем флаг
-sed -i 's/ETAP2_FLAG="X"/ETAP2_FLAG=" "/' config.sh
+sed -i 's/ETAP2_FLAG="'$FLAGSET'"/ETAP2_FLAG=" "/' config.sh
 fi
 
 if [ "$ETAP3_FLAG" == "X" ]; then
@@ -267,9 +268,8 @@ compile
 fi
 done
 # Снимаем флаг
-sed -i 's/ETAP3_FLAG="X"/ETAP3_FLAG=" "/' config.sh
+sed -i 's/ETAP3_FLAG="'$FLAGSET'"/ETAP3_FLAG=" "/' config.sh
 fi
-
 
 # TEST INSTALL... 
 echo $PKG_CONFIG_PATH
@@ -388,7 +388,7 @@ if [ -d $APP_COMPILE/$packagedir ]; then
 fi
 done
 # Снимаем флаг
-sed -i 's/ETAP4_FLAG="X"/ETAP4_FLAG=" "/' config.sh
+sed -i 's/ETAP4_FLAG="'$FLAGSET'"/ETAP4_FLAG=" "/' config.sh
 fi # End Etap 4
 
 
@@ -424,7 +424,7 @@ if [ -d $APP_COMPILE/$packagedir ]; then
 fi
 done
 # Снимаем флаг
-sed -i 's/ETAP5_FLAG="X"/ETAP5_FLAG=" "/' config.sh
+sed -i 's/ETAP5_FLAG="'$FLAGSET'"/ETAP5_FLAG=" "/' config.sh
 fi # End Etap 5
 
 
@@ -441,7 +441,7 @@ grep -v '^#' ../$APP_LISTING/legacy.dat | awk '{print $1 " " $3}' > ../$APP_LIST
 md5sum -c ../$APP_LISTING/Xorg-Legacy.md5 && cd ..
 
 # Снимаем флаг
-sed -i 's/ETAP6_WGET_FLAG=" "/ETAP6_WGET_FLAG=" "/' config.sh
+sed -i 's/ETAP6_WGET_FLAG="'$FLAGSET'"/ETAP6_WGET_FLAG=" "/' config.sh
 
 fi
 
@@ -481,5 +481,5 @@ if [ -d $packagedir ]; then
 fi
 done
 # Снимаем флаг
-  sed -i 's/ETAP6_FLAG="X"/ETAP6_FLAG=" "/' config.sh
+  sed -i 's/ETAP6_FLAG="'$FLAGSET'"/ETAP6_FLAG=" "/' config.sh
 fi # End Etap 6
