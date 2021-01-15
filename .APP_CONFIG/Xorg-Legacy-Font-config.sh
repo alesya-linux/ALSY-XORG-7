@@ -35,12 +35,7 @@ if [ $? -eq 0 ]; then
       autoreconf -fiv &&
       cd ..
     fi &&
-    if [ -x $sapp/configure ]; then    
-      case $app in
-      luit-[0-9]* )
-         sed -i -e "/D_XOPEN/s/5/6/" $sapp/configure
-       ;;
-      esac
+    if [ -x $sapp/configure ]; then
       ./$sapp/configure $XORG_CONFIG && popd
     fi 
   fi
