@@ -1,12 +1,13 @@
 #!/bin/bash
 FLAGSET="X"
-ETAP1_FLAG="X" # This is Flag compile for file XORG-7.md5
-ETAP2_FLAG="X" # This is Flag compile for file app-7.md5 
-ETAP3_FLAG="X" # This is Flag compile for file font-7.md5 
-ETAP4_FLAG="X" # This is Flag compile for file XorgInputDrivers.md5
-ETAP5_FLAG="X" # This is Flag compile for file XorgVideoDrivers.md5
-ETAP6_FLAG="X" # This is Flag compile for file Xorg-Legacy.md5
-ETAP6_WGET_FLAG="X"
+ETAP1_FLAG=" " # This is Flag compile for file XORG-7.md5
+ETAP2_FLAG=" " # This is Flag compile for file app-7.md5 
+ETAP3_FLAG=" " # This is Flag compile for file font-7.md5 
+ETAP4_FLAG=" " # This is Flag compile for file XorgInputDrivers.md5
+ETAP5_FLAG=" " # This is Flag compile for file XorgVideoDrivers.md5
+ETAP6_FLAG=" " # This is Flag compile for file Xorg-Legacy.md5
+ETAP6_WGET_FLAG=" "
+export SOURCE_DATE_EPOCH="$(date +%s)";
 
 export XORG_PREFIX="/usr/src/tools/XORG-7"
 export XORG_CONFIG="--prefix=$XORG_PREFIX              \
@@ -228,6 +229,8 @@ if [ ! -d $packagedir ]; then
   fi
   cp $APP_CONFIG/xorg-font-config.sh $packagedir/config.sh
   cp $APP_MAKEFILE/proto-Makefile.am $packagedir/Makefile.am
+fi
+
   case $packagedir in 
   xkeyboard-config* )
     cp -r $APP_CONFIG/XKeyboardConfig.sh $packagedir/config.sh
@@ -260,8 +263,13 @@ if [ ! -d $packagedir ]; then
   util* )
     cp -r $APP_CONFIG/util-linux-config.sh $packagedir/config.sh
   ;;
+  freefont* )
+    cp -r $APP_CONFIG/freefont-config.sh $packagedir/config.sh && chmod u+rwx $packagedir/config.sh
+    cp -r $APP_CONFIG/freefont-install.sh $packagedir/install.sh && chmod u+rwx $packagedir/install.sh 
+    cp -r $APP_MAKEFILE/freefont-Makefile.am $packagedir/Makefile.am
+    cp -r $APP_MAKEFILE/freefont-Makefile.in $packagedir/Makefile.in
+  ;;
   esac
-fi
       
 if [ -d $packagedir ]; then
 compile
