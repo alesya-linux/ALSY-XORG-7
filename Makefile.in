@@ -8,7 +8,7 @@ CURR_DIR=${CURRDIR}
 all:
 	mkdir -p ${PWD}/.install
 install:
-	pushd ${CURR_DIR} && popd
+	pushd ${CURR_DIR}/.install && popd
 	mv -t .install ${PREFIX_X}
 	mkdir -p ${PREFIX_X}
 	cd ${PREFIX_X}/.. && mv -t . ${CURR_DIR}/.install/*
