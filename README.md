@@ -48,9 +48,15 @@ zlib-1.2.11 и другими, чтобы узнать подробнее
 
 # Для установки в систему Linux, необходимо выполнить команду:
 
-1. ./config.sh  
+1. ./config.sh                              
 2. make         
 3. sudo make install
+
+или
+
+1. ./config.sh --prefix=/usr
+2. make
+3. su -c "make install"
 
 # Префикс установки указывается в файле config.sh
 
