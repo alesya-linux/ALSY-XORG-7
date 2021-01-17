@@ -54,7 +54,7 @@ zlib-1.2.11 и другими, чтобы узнать подробнее
 
 или
 
-1. ./config.sh --prefix=/usr
+1. ./config.sh --prefix=/usr/{you_new_dir}
 2. make
 3. su -c "make install"
 
