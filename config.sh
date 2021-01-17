@@ -7,19 +7,18 @@ ETAP4_FLAG=" " # This is Flag compile for file XorgInputDrivers.md5
 ETAP5_FLAG=" " # This is Flag compile for file XorgVideoDrivers.md5
 ETAP6_FLAG=" " # This is Flag compile for file Xorg-Legacy.md5
 ETAP6_WGET_FLAG=" "
+export SOURCE_DATE_EPOCH="$(date +%s)";
 
-if [ $( echo $1 | sed 's/--prefix=//' ) != "" ]; then
+if [ $( echo $1 | sed 's/--prefix=//' ) != ""  ]; then
   export XORG_PREFIX="$( echo $1 | sed 's/--prefix=//' )"
 else
   export XORG_PREFIX="/usr/src/tools/XORG-7"
 fi
-export TMPDIR="/tmp"
-prefixa=$(echo $XORG_PREFIX | sed 's/\//\\\//g' )
-sed -i 's/\${PREFIX}/'$prefixa'/' Makefile
-echo $XORG_PREFIX
-echo $prefixa
 
-export SOURCE_DATE_EPOCH="$(date +%s)";
+prefix=$(echo $XORG_PREFIX | sed 's/\//\\\//g' )
+sed 's/\${PREFIX}/'$prefix'/' Makefile.am > Makefile
+
+export XORG_PREFIX="/usr/src/tools/XORG-7"
 export XORG_CONFIG="--prefix=$XORG_PREFIX              \
                     --sysconfdir=$XORG_PREFIX/etc      \
                     --localstatedir=$XORG_PREFIX/var   \
@@ -38,8 +37,8 @@ C_INCLUDE_PATH="$XORG_PREFIX/include:$C_INCLUDE_PATH"
 CPLUS_INCLUDE_PATH="$XORG_PREFIX/include:$CPLUS_INCLUDE_PATH"
 ACLOCAL="aclocal -I $XORG_PREFIX/share/aclocal"
 export ACLOCAL LIBRARY_PATH C_INCLUDE_PATH CPLUS_INCLUDE_PATH
-set export XORGPREFIX="$XORG_PREFIX"
-set export XORGCONFIG="$XORG_CONFIG"
+export XORGPREFIX="$XORG_PREFIX"
+export XORGCONFIG="$XORG_CONFIG"
 
 MD5SUMFILE=""
 APPLICATION_SITE=""
