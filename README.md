@@ -48,9 +48,9 @@ zlib-1.2.11 и другими, чтобы узнать подробнее
 
 # Для установки в систему Linux, необходимо выполнить команду:
 
-1. ./config.sh                                 &&
-   make PREFIX=$XORG_PREFIX                    &&
-   su -c "make PREFIX=$XORG_PREFIX install"
+1. ./config.sh  
+2. make         
+3. sudo make install
 
 # Префикс установки указывается в файле config.sh
 
