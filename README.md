@@ -41,8 +41,8 @@ zlib-1.2.11 и другими, чтобы узнать подробнее
 # Для установки в систему Linux, необходимо выполнить команды:
 
 1. ./config.sh
-2. make
-3. su -c "make install"
+2. make PREFIX=$XORG_PREFIX
+3. su -c "make PREFIX=$XORG_PREFIX install"
 
 # Префикс установки указывается в файле config.sh
 
@@ -62,3 +62,4 @@ zlib-1.2.11 и другими, чтобы узнать подробнее
 9. GNU libtool >= 2.4.6
 10. GNU Autoconf >= 2.7
 11. pkg-config >= 0.29
+12. GNU Awk >= 3.1.8
