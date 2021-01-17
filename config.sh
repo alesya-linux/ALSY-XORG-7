@@ -9,7 +9,7 @@ ETAP6_FLAG=" " # This is Flag compile for file Xorg-Legacy.md5
 ETAP6_WGET_FLAG=" "
 export SOURCE_DATE_EPOCH="$(date +%s)";
 
-if [ $( echo $1 | sed 's/--prefix=//' ) != ""  ]; then
+if [ "$( echo $1 | sed 's/--prefix=//' )" != ""  ]; then
   export XORG_PREFIX="$( echo $1 | sed 's/--prefix=//' )"
 else
   export XORG_PREFIX="/usr/src/tools/XORG-7"
