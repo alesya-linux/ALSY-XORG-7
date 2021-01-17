@@ -46,11 +46,11 @@ zlib-1.2.11 и другими, чтобы узнать подробнее
 2. app-7.md5  
 3. font-7.md5  
 
-# Для установки в систему Linux, необходимо выполнить команды:
+# Для установки в систему Linux, необходимо выполнить команду:
 
-1. ./config.sh
-2. make PREFIX=$XORG_PREFIX
-3. su -c "make PREFIX=$XORG_PREFIX install"
+1. ./config.sh                                 &&
+   make PREFIX=$XORG_PREFIX                    &&
+   su -c "make PREFIX=$XORG_PREFIX install"
 
 # Префикс установки указывается в файле config.sh
 
