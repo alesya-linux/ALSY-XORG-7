@@ -43,8 +43,10 @@ EOF
 chmod 744 $XORG_PREFIX/etc/profile.d/xorg.sh
 echo "$XORG_PREFIX/lib" >> /etc/ld.so.conf
 cp -a /etc/ld.so.conf $XORG_PREFIX/etc/ld.so.conf
-sed "s@/usr/X11R6@$XORG_PREFIX@g" -i /etc/man_db.conf
-cp -a /etc/man_db.conf $XORG_PREFIX/etc/man_db.conf
+if [ -f /etc/man_db.conf ]; then
+  sed "s@/usr/X11R6@$XORG_PREFIX@g" -i /etc/man_db.conf
+  cp -a /etc/man_db.conf $XORG_PREFIX/etc/man_db.conf
+fi
 # Some applications look for shared files in /usr/share/X11. Create a symbolic link to the proper location as the root user:
 mkdir -p $XORG_PREFIX/usr/share
 ln -svf $XORG_PREFIX/share/X11 $XORG_PREFIX/usr/share/X11
