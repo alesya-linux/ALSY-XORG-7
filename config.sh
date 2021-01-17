@@ -15,8 +15,13 @@ else
   export XORG_PREFIX="/usr/src/tools/XORG-7"
 fi
 
+CURR_DIR=$PWD
+
 prefix=$(echo $XORG_PREFIX | sed 's/\//\\\//g' )
-sed 's/\${PREFIX}/'$prefix'/' Makefile.am > Makefile
+cp -a Makefile.in Makefile.am
+sed -i 's/\${PREFIX}/'$prefix'/' Makefile.am
+CURRDIR=$(echo $CURR_DIR | sed 's/\//\\\//g' )
+sed 's/\${CURRDIR}/'$CURRDIR'/' Makefile.am > Makefile
 
 export XORG_PREFIX="/usr/src/tools/XORG-7"
 export XORG_CONFIG="--prefix=$XORG_PREFIX              \
