@@ -482,7 +482,7 @@ do
   case $packagedir in
   xterm* )
     packagedir=${package%.tgz}
-    typearchive=${package#*.tgz}
+    typearchive=${package#*.}
   ;;
   esac
 export ALSY_XORG_APP_CONFIG_ARCHIVE_TYPE="$typearchive"
