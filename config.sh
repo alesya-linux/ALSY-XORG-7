@@ -5,8 +5,8 @@ ETAP2_FLAG=" " # This is Flag compile for file app-7.md5
 ETAP3_FLAG=" " # This is Flag compile for file font-7.md5 
 ETAP4_FLAG=" " # This is Flag compile for file XorgInputDrivers.md5
 ETAP5_FLAG=" " # This is Flag compile for file XorgVideoDrivers.md5
-ETAP6_FLAG=" " # This is Flag compile for file Xorg-Legacy.md5
-ETAP6_WGET_FLAG=" "
+ETAP6_FLAG="X" # This is Flag compile for file Xorg-Legacy.md5
+ETAP6_WGET_FLAG="X"
 export SOURCE_DATE_EPOCH="$(date +%s)";
 
 if [ "$( echo $1 | sed 's/--prefix=//' )" != ""  ]; then
@@ -53,6 +53,7 @@ APP_LISTING=".APP_LISTING"
 APP_CONFIG=".APP_CONFIG"
 APP_MAKEFILE=".APP_MAKEFILE"
 APP_COMPILE="build/compile"
+APP_PACKAGE="APP_PACKAGE"
 
 echo "Installation Log File: $(date)" > install_log.txt
 
@@ -115,11 +116,14 @@ do
 export ALSY_XORG_APP_CONFIG_ARCHIVE_TYPE="$typearchive"
 if [ ! -d $APP_COMPILE/$packagedir ]; then
   mkdir -p $APP_COMPILE/$packagedir
-  if [ -f $package ]; then
-    mv -v $package $APP_COMPILE/$packagedir
-  fi
-  cp $APP_MAKEFILE/proto-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
-  case $packagedir in
+fi  
+
+if [ -f $APP_PACKAGE/$package ]; then
+  cp -rfv $APP_PACKAGE/$package $APP_COMPILE/$packagedir
+fi
+
+cp $APP_MAKEFILE/proto-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
+case $packagedir in
   util-linux* )
     cp -r $APP_CONFIG/util-linux-config.sh $APP_COMPILE/$packagedir/config.sh
   ;;
@@ -195,8 +199,8 @@ if [ ! -d $APP_COMPILE/$packagedir ]; then
   zlib* )
     cp $APP_CONFIG/zlib-config.sh $APP_COMPILE/$packagedir/config.sh
   ;;
-  esac
-fi
+esac
+
 
 if [ -d $APP_COMPILE/$packagedir ]; then
  pushd $APP_COMPILE
@@ -219,15 +223,20 @@ typearchive=${package#*.tar.*}
 export ALSY_XORG_APP_CONFIG_ARCHIVE_TYPE="$typearchive"
 if [ ! -d $APP_COMPILE/$packagedir ]; then
   mkdir -p $APP_COMPILE/$packagedir
-  cp $APP_CONFIG/xorg-app-config.sh $APP_COMPILE/$packagedir/config.sh
-  case $packagedir in 
+fi
+
+if [ -f $APP_PACKAGE/$package ]; then
+  cp -rfv $APP_PACKAGE/$package $APP_COMPILE/$packagedir
+fi
+
+cp $APP_CONFIG/xorg-app-config.sh $APP_COMPILE/$packagedir/config.sh
+case $packagedir in 
   xcursor-themes* )
     cp -r $APP_CONFIG/data-config.sh $APP_COMPILE/$packagedir/config.sh
   ;;
-  esac  
-  cp $APP_MAKEFILE/proto-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
-fi
-      
+esac  
+cp $APP_MAKEFILE/proto-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
+
 if [ -d $APP_COMPILE/$packagedir ]; then
   pushd $APP_COMPILE
   compile
@@ -247,14 +256,16 @@ packagedir=${package%.tar.*}
 typearchive=${package#*.tar.*}
 export ALSY_XORG_APP_CONFIG_ARCHIVE_TYPE="$typearchive"
 if [ ! -d $packagedir ]; then
-  mkdir -p $packagedir
-  if [ -f $package ]; then
-    mv -v $package $packagedir
-  fi
-  cp $APP_CONFIG/xorg-font-config.sh $packagedir/config.sh
-  cp $APP_MAKEFILE/proto-Makefile.am $packagedir/Makefile.am
+  mkdir -p $packagedir  
 fi
 
+if [ -f $APP_PACKAGE/$package ]; then
+  cp -rfv $APP_PACKAGE/$package $APP_COMPILE/$packagedir
+fi 
+
+  cp $APP_CONFIG/xorg-font-config.sh $packagedir/config.sh
+  cp $APP_MAKEFILE/proto-Makefile.am $packagedir/Makefile.am
+  
   case $packagedir in 
   xkeyboard-config* )
     cp -r $APP_CONFIG/XKeyboardConfig.sh $packagedir/config.sh
@@ -358,11 +369,11 @@ typearchive=${package#*.tar.*}
 export ALSY_XORG_APP_CONFIG_ARCHIVE_TYPE="$typearchive"
 if [ ! -d $APP_COMPILE/$packagedir ]; then
   mkdir -p $APP_COMPILE/$packagedir
-  if [ -f $APP_COMPILE/$package ]; then
-    mv -v $package $APP_COMPILE/$packagedir
-  fi
 fi
 
+if [ -f $APP_PACKAGE/$package ]; then
+  cp -rfv $APP_PACKAGE/$package $APP_COMPILE/$packagedir
+fi 
 
   case $packagedir in
   xf86-input-wacom* )
@@ -433,9 +444,9 @@ packagedir=${package%.tar.*}
 typearchive=${package#*.tar.*}
 export ALSY_XORG_APP_CONFIG_ARCHIVE_TYPE="$typearchive"
 if [ ! -d $APP_COMPILE/$packagedir ]; then
-  mkdir -p $APP_COMPILE/$packagedir
-  if [ -f $APP_COMPILE/$package ]; then
-    mv -v $package $APP_COMPILE/$packagedir
+  mkdir -p $APP_COMPILE/$packagedir 
+  if [ -f $APP_PACKAGE/$package ]; then
+    cp -rfv $APP_PACKAGE/$package $APP_COMPILE/$packagedir
   fi 
   cp $APP_MAKEFILE/proto-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
   cp $APP_CONFIG/proto-video-driver-config.sh $APP_COMPILE/$packagedir/config.sh
@@ -494,8 +505,8 @@ if [ ! -d $APP_COMPILE/$packagedir ]; then
   mkdir -p $APP_COMPILE/$packagedir
 fi
 
-if [ -f legacy/$package ]; then
-  cp -rfv legacy/$package $APP_COMPILE/$packagedir
+if [ -f $APP_PACKAGE/$package ]; then
+  cp -rfv $APP_PACKAGE/$package $APP_COMPILE/$packagedir
 fi 
 
 cp $APP_MAKEFILE/proto-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
