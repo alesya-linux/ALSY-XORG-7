@@ -69,11 +69,19 @@ check_last()
   fi
 }
 
+as_root()
+{
+  if   [ $EUID = 0 ];        then $*
+  elif [ -x /usr/bin/sudo ]; then sudo $*
+  else                            su -c \\"$*\\"
+  fi
+}
+
 make_install()
 {
 LASTPATH="$PATH"
 PATH="$SAVEPATH"
-make install
+as_root make install
 check_last "make install"
 # Add Log
 Add_Log
@@ -478,28 +486,29 @@ do
   ;;
   esac
 export ALSY_XORG_APP_CONFIG_ARCHIVE_TYPE="$typearchive"
-if [ ! -d $packagedir ]; then
-  mkdir -p $packagedir  
+if [ ! -d $APP_COMPILE/$packagedir ]; then
+  mkdir -p $APP_COMPILE/$packagedir
 fi
 
 if [ -f legacy/$package ]; then
-  cp -rfv legacy/$package $packagedir
+  cp -rfv legacy/$package $APP_COMPILE/$packagedir
 fi 
-  
-cp $APP_MAKEFILE/proto-Makefile.am $packagedir/Makefile.am
-cp $APP_CONFIG/Xorg-Legacy-Font-config.sh $packagedir/config.sh
+
+cp $APP_MAKEFILE/proto-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
+cp $APP_CONFIG/Xorg-Legacy-Font-config.sh $APP_COMPILE/$packagedir/config.sh
 export APP_SITE="app"
  case $packagedir in
  font* )
    export APP_SITE="font"
  ;;
  xterm* )
-   cp $APP_CONFIG/Xorg-xterm-config.sh $packagedir/config.sh
+   cp $APP_CONFIG/Xorg-xterm-config.sh $APP_COMPILE/$packagedir/config.sh
  ;;
  esac
-if [ -d $packagedir ]; then
+if [ -d $APP_COMPILE/$packagedir ]; then
+  pushd $APP_COMPILE
   compile
-  ldconfig
+  popd
 fi
 done
 # Снимаем флаг
