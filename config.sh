@@ -119,12 +119,12 @@ popd
 }
 
 if [ "$ETAP1_FLAG" == "X" ]; then
-
-for package in $(grep -v '^#' $APP_LISTING/XORG-7.md5 | awk '{print $2}')
+COMPILEFILE="$APP_LISTING/XORG-7.md5"
+for package in $(grep -v '^#' $COMPILEFILE | awk '{print $2}')
 do  
   packagedir=${package%.tar.*}
   typearchive=${package#*.tar.*}
-  CURRMD5SUM=$( grep $package $APP_LISTING/XORG-7.md5 | awk '{print $1}' )
+  CURRMD5SUM=$(grep -v '^#' $COMPILEFILE | grep $package | cut -d" " -f1)
   
 export ALSY_XORG_APP_CONFIG_ARCHIVE_TYPE="$typearchive"
 if [ ! -d $APP_COMPILE/$packagedir ]; then
@@ -227,12 +227,13 @@ fi
 
 
 if [ "$ETAP2_FLAG" == "X" ]; then
-
+COMPILEFILE="$APP_LISTING/app-7.md5"
 # List Xorg Application
-for package in $(grep -v '^#' $APP_LISTING/app-7.md5 | awk '{print $2}')
+for package in $(grep -v '^#' $COMPILEFILE | awk '{print $2}')
 do
 packagedir=${package%.tar.*}
 typearchive=${package#*.tar.*}
+CURRMD5SUM=$(grep -v '^#' $COMPILEFILE | grep $package | cut -d" " -f1)
 export ALSY_XORG_APP_CONFIG_ARCHIVE_TYPE="$typearchive"
 if [ ! -d $APP_COMPILE/$packagedir ]; then
   mkdir -p $APP_COMPILE/$packagedir
@@ -261,12 +262,13 @@ sed -i 's/ETAP2_FLAG="'$FLAGSET'"/ETAP2_FLAG=" "/' config.sh
 fi
 
 if [ "$ETAP3_FLAG" == "X" ]; then
-
+COMPILEFILE="APP_LISTING/font-7.md5"
 # List Xorg Font
-for package in $(grep -v '^#' $APP_LISTING/font-7.md5 | awk '{print $2}')
+for package in $(grep -v '^#' $COMPILEFILE | awk '{print $2}')
 do
 packagedir=${package%.tar.*}
 typearchive=${package#*.tar.*}
+CURRMD5SUM=$(grep -v '^#' $COMPILEFILE | grep $package | cut -d" " -f1)  
 export ALSY_XORG_APP_CONFIG_ARCHIVE_TYPE="$typearchive"
 if [ ! -d $APP_COMPILE/$packagedir ]; then
   mkdir -p $APP_COMPILE/$packagedir  
@@ -381,7 +383,7 @@ for package in $(grep -v '^#' $COMPILEFILE | awk '{print $2}')
 do
 packagedir=${package%.tar.*}
 typearchive=${package#*.tar.*}
-CURRMD5SUM=$(grep -v '^#' $COMPILEFILE | grep $package | cut -d" " -f1)
+CURRMD5SUM=$(grep -v '^#' $COMPILEFILE | grep $package | cut -d" " -f1)  
 export ALSY_XORG_APP_CONFIG_ARCHIVE_TYPE="$typearchive"
 if [ ! -d $APP_COMPILE/$packagedir ]; then
   mkdir -p $APP_COMPILE/$packagedir
@@ -452,12 +454,13 @@ fi # End Etap 4
 
 
 if [ "$ETAP5_FLAG" == "X" ]; then
-
+COMPILEFILE="APP_LISTING/XorgVideoDrivers.md5"
 # List Xorg Video Drivers
-for package in $(grep -v '^#' $APP_LISTING/XorgVideoDrivers.md5 | awk '{print $2}')
+for package in $(grep -v '^#' $COMPILEFILE | awk '{print $2}')
 do
 packagedir=${package%.tar.*}
 typearchive=${package#*.tar.*}
+CURRMD5SUM=$(grep -v '^#' $COMPILEFILE | grep $package | cut -d" " -f1)  
 export ALSY_XORG_APP_CONFIG_ARCHIVE_TYPE="$typearchive"
 if [ ! -d $APP_COMPILE/$packagedir ]; then
   mkdir -p $APP_COMPILE/$packagedir 
@@ -488,7 +491,7 @@ fi # End Etap 5
 
 
 if [ "$ETAP6_FLAG" == "X" ]; then
-
+COMPILEFILE="APP_LISTING/Xorg-Legacy.md5"
 # Xorg Legacy Font
 if [ "$ETAP6_WGET_FLAG" == "X" ]; then
 
@@ -496,9 +499,9 @@ mkdir -p $APP_PACKAGE &&
 cd    $APP_PACKAGE &&
 grep -v '^#' ../$APP_LISTING/legacy.dat | awk '{print $2$3}' | wget -i- -c \
 -B https://www.x.org/pub/individual/ &&
-grep -v '^#' ../$APP_LISTING/legacy.dat | awk '{print $1 " " $3}' > ../$APP_LISTING/Xorg-Legacy.md5 &&
-md5sum -c ../$APP_LISTING/Xorg-Legacy.md5 && 
-echo "81e2d19bd74288f4ddd2476b466c3269 xterm-363.tgz" >> ../$APP_LISTING/Xorg-Legacy.md5 && 
+grep -v '^#' ../$APP_LISTING/legacy.dat | awk '{print $1 " " $3}' > ../$COMPILEFILE &&
+md5sum -c ../$COMPILEFILE && 
+echo "81e2d19bd74288f4ddd2476b466c3269 xterm-363.tgz" >> ../$COMPILEFILE && 
 cd ..
 
 # Снимаем флаг
@@ -506,10 +509,11 @@ sed -i 's/ETAP6_WGET_FLAG="'$FLAGSET'"/ETAP6_WGET_FLAG=" "/' config.sh
 
 fi
 
-for package in $(grep -v '^#' $APP_LISTING/Xorg-Legacy.md5 | awk '{print $2}')
+for package in $(grep -v '^#' $COMPILEFILE | awk '{print $2}')
 do
   packagedir=${package%.tar.*}
   typearchive=${package#*.tar.*}
+  CURRMD5SUM=$(grep -v '^#' $COMPILEFILE | grep $package | cut -d" " -f1)  
   case $packagedir in
   xterm* )
     packagedir=${package%.tgz}
