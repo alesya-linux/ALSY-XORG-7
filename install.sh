@@ -32,8 +32,16 @@ XORG_CONFIG="--prefix=\$XORG_PREFIX               \
              --disable-static"
 export XORG_PREFIX XORG_CONFIG
 PATH="$XORG_PREFIX/bin:$PATH"
-PKG_CONFIG_PATH="$XORG_PREFIX/lib/pkgconfig:$PKG_CONFIG_PATH"   
-PKG_CONFIG_PATH="$XORG_PREFIX/share/pkgconfig:$PKG_CONFIG_PATH" 
+PKG_CONFIG_PATH="\
+/lib/pkgconfig:\
+/lib32/pkgconfig:\
+/lib64/pkgconfig:\
+/usr/lib/pkgconfig:\
+/usr/lib64/pkgconfig:\
+/usr/local/lib/pkgconfig:\
+/usr/local/lib64/pkgconfig\
+"
+PKG_CONFIG_PATH="$XORG_PREFIX/share/pkgconfig:$XORG_PREFIX/lib/pkgconfig:$PKG_CONFIG_PATH"
 LIBRARY_PATH="$XORG_PREFIX/lib:$LIBRARY_PATH"
 C_INCLUDE_PATH="$XORG_PREFIX/include:$C_INCLUDE_PATH"
 CPLUS_INCLUDE_PATH="$XORG_PREFIX/include:$CPLUS_INCLUDE_PATH"
