@@ -5,8 +5,8 @@ ETAP2_FLAG=" " # This is Flag compile for file app-7.md5
 ETAP3_FLAG=" " # This is Flag compile for file font-7.md5 
 ETAP4_FLAG=" " # This is Flag compile for file XorgInputDrivers.md5
 ETAP5_FLAG=" " # This is Flag compile for file XorgVideoDrivers.md5
-ETAP6_FLAG="X" # This is Flag compile for file Xorg-Legacy.md5
-ETAP6_WGET_FLAG="X"
+ETAP6_FLAG=" " # This is Flag compile for file Xorg-Legacy.md5
+ETAP6_WGET_FLAG=" "
 export SOURCE_DATE_EPOCH="$(date +%s)";
 
 if [ "$( echo $1 | sed 's/--prefix=//' )" != ""  ]; then
@@ -95,6 +95,7 @@ APPLICATION_SITE="$PWD"
 INSTALL_APPLICATION="$packagedir"
  
 pushd $packagedir
+chmod u+x config.sh
 ./config.sh
 check_last "config"
 if [ -f $APPLICATION_SITE/$packagedir/$package ]; then
