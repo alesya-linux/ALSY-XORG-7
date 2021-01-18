@@ -90,13 +90,15 @@ PATH="$LASTPATH"
 
 compile()
 {
-  APPLICATION_SITE="$PWD"
-  MD5SUMFILE="$(md5sum $APPLICATION_SITE/$packagedir/$package)"
-  INSTALL_APPLICATION="$packagedir"
-  
+APPLICATION_SITE="$PWD"
+INSTALL_APPLICATION="$packagedir"
+ 
 pushd $packagedir
 ./config.sh
 check_last "config"
+if [ -f $APPLICATION_SITE/$packagedir/$package ]; then
+  MD5SUMFILE="$(md5sum $APPLICATION_SITE/$packagedir/$package)"
+fi
 make      
 check_last "make"
 make_install
