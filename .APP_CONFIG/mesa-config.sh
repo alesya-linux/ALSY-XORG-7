@@ -38,8 +38,21 @@ if [ $? -eq 0 ]; then
     if [ -x $sapp/configure ]; then
       ./$sapp/configure $XORG_CONFIG && popd
     else
-GALLIUM_DRV="i915,nouveau"
+GALLIUM_DRV="i915,iris,nouveau,svga,virgl"
 DRI_DRIVERS="i965,nouveau"
+      filemaname="mesa-20.3.3-add_xdemos-1.patch"
+      filedwnld="http://www.linuxfromscratch.org/patches/blfs/svn/$filemaname"
+      if [ -f ../../../../APP_PATCHES/$filename ]; then
+        cp -a ../../../../APP_PATCHES/$filename $filename  
+      fi       
+      if [ ! -f $filename ]; then         
+        wget $filedwnld 
+        if [ $? -ne 0 ]; then
+          exit 1
+        fi
+      fi
+      cd $sapp &&
+      patch -Np1 -i ../mesa-20.3.3-add_xdemos-1.patch &&
       meson --prefix=$XORG_PREFIX          \
             -Dplatforms=x11                \
             -Dllvm=disabled                \
@@ -52,7 +65,7 @@ DRI_DRIVERS="i965,nouveau"
             -Ddri-drivers=$DRI_DRIVERS     \
             -Dshared-swr=false             \
             -Dvalgrind=disabled            \
-            -Dlibunwind=disabled $sapp         
+            -Dlibunwind=disabled ..         
 #      -Dbuildtype=release            \      
 #      $sapp
     fi 
