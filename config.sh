@@ -476,8 +476,8 @@ if [ "$ETAP6_FLAG" == "X" ]; then
 # Xorg Legacy Font
 if [ "$ETAP6_WGET_FLAG" == "X" ]; then
 
-mkdir -p legacy &&
-cd    legacy &&
+mkdir -p $APP_PACKAGE &&
+cd    $APP_PACKAGE &&
 grep -v '^#' ../$APP_LISTING/legacy.dat | awk '{print $2$3}' | wget -i- -c \
 -B https://www.x.org/pub/individual/ &&
 grep -v '^#' ../$APP_LISTING/legacy.dat | awk '{print $1 " " $3}' > ../$APP_LISTING/Xorg-Legacy.md5 &&
