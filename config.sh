@@ -256,59 +256,61 @@ do
 packagedir=${package%.tar.*}
 typearchive=${package#*.tar.*}
 export ALSY_XORG_APP_CONFIG_ARCHIVE_TYPE="$typearchive"
-if [ ! -d $packagedir ]; then
-  mkdir -p $packagedir  
+if [ ! -d $APP_COMPILE/$packagedir ]; then
+  mkdir -p $APP_COMPILE/$packagedir  
 fi
 
 if [ -f $APP_PACKAGE/$package ]; then
   cp -rfv $APP_PACKAGE/$package $APP_COMPILE/$packagedir
 fi 
 
-  cp $APP_CONFIG/xorg-font-config.sh $packagedir/config.sh
-  cp $APP_MAKEFILE/proto-Makefile.am $packagedir/Makefile.am
+  cp $APP_CONFIG/xorg-font-config.sh $APP_COMPILE/$packagedir/config.sh
+  cp $APP_MAKEFILE/proto-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
   
   case $packagedir in 
   xkeyboard-config* )
-    cp -r $APP_CONFIG/XKeyboardConfig.sh $packagedir/config.sh
+    cp -r $APP_CONFIG/XKeyboardConfig.sh $APP_COMPILE/$packagedir/config.sh
   ;;
   xorg-server* )
-    cp -r $APP_CONFIG/Xorg-Server-config.sh $packagedir/config.sh
+    cp -r $APP_CONFIG/Xorg-Server-config.sh $APP_COMPILE/$packagedir/config.sh
   ;;
   pixman* )
-    cp -r $APP_CONFIG/pixman-config.sh $packagedir/config.sh
+    cp -r $APP_CONFIG/pixman-config.sh $APP_COMPILE/$packagedir/config.sh
   ;;
   libdrm* )
-    cp -r $APP_CONFIG/libdrm-config.sh $packagedir/config.sh
-    cp -r $APP_MAKEFILE/meson-Makefile.am $packagedir/Makefile.am
+    cp -r $APP_CONFIG/libdrm-config.sh $APP_COMPILE/$packagedir/config.sh
+    cp -r $APP_MAKEFILE/meson-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
   ;;
   libunwind* )
-    cp -r $APP_CONFIG/libunwind-config.sh $packagedir/config.sh
+    cp -r $APP_CONFIG/libunwind-config.sh $APP_COMPILE/$packagedir/config.sh
   ;;
   freetype-2* )
-    cp -r $APP_CONFIG/freetype-config.sh $packagedir/config.sh
+    cp -r $APP_CONFIG/freetype-config.sh $APP_COMPILE/$packagedir/config.sh
   ;;
   freetype2* )
-    cp -r $APP_CONFIG/freetype2-config.sh $packagedir/config.sh
+    cp -r $APP_CONFIG/freetype2-config.sh $APP_COMPILE/$packagedir/config.sh
   ;;
   harfbuzz* )
-    cp -r $APP_CONFIG/harfbuzz-config.sh $packagedir/config.sh  
+    cp -r $APP_CONFIG/harfbuzz-config.sh $APP_COMPILE/$packagedir/config.sh  
   ;;
   fontconfig* )
-    cp -r $APP_CONFIG/fontconfig.sh $packagedir/config.sh
+    cp -r $APP_CONFIG/fontconfig.sh $APP_COMPILE/$packagedir/config.sh
   ;;
   util* )
-    cp -r $APP_CONFIG/util-linux-config.sh $packagedir/config.sh
+    cp -r $APP_CONFIG/util-linux-config.sh $APP_COMPILE/$packagedir/config.sh
   ;;
   freefont* )
-    cp -r $APP_CONFIG/freefont-config.sh $packagedir/config.sh && chmod u+rwx $packagedir/config.sh
-    cp -r $APP_CONFIG/freefont-install.sh $packagedir/install.sh && chmod u+rwx $packagedir/install.sh 
-    cp -r $APP_MAKEFILE/freefont-Makefile.am $packagedir/Makefile.am
-    cp -r $APP_MAKEFILE/freefont-Makefile.in $packagedir/Makefile.in
+    cp -r $APP_CONFIG/freefont-config.sh $APP_COMPILE/$packagedir/config.sh
+    cp -r $APP_CONFIG/freefont-install.sh $APP_COMPILE/$packagedir/install.sh
+    cp -r $APP_MAKEFILE/freefont-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
+    cp -r $APP_MAKEFILE/freefont-Makefile.in $APP_COMPILE/$packagedir/Makefile.in
   ;;
   esac
       
-if [ -d $packagedir ]; then
-compile
+if [ -d $APP_COMPILE/$packagedir ]; then
+  pushd $APP_COMPILE
+  compile
+  popd
 fi
 done
 # Снимаем флаг
