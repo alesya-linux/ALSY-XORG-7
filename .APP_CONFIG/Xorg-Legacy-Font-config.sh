@@ -35,7 +35,8 @@ if [ $? -eq 0 ]; then
       autoreconf -fiv &&
       cd ..
     fi &&
-    if [ -x $sapp/configure ]; then
+    if [ -x $sapp/configure ]; then    
+       export SOURCE_DATE_EPOCH=$(date +%s)
       ./$sapp/configure $XORG_CONFIG && popd
     fi 
   fi
