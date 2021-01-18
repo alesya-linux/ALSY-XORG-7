@@ -1,4 +1,4 @@
-# ALSY-XORG-7
+﻿# ALSY-XORG-7
 
 Здесь находятся скрипты 
 
@@ -58,7 +58,7 @@ zlib-1.2.11 и другими, чтобы узнать подробнее
 2. make
 3. su -c "make install"
 
-# Префикс установки указывается в файле config.sh
+# Префикс установки по умолчанию указывается в файле config.sh
 
 1. export XORG_PREFIX="/usr/src/tools/XORG-7"
 
