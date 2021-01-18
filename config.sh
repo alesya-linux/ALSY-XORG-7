@@ -470,7 +470,9 @@ cd    legacy &&
 grep -v '^#' ../$APP_LISTING/legacy.dat | awk '{print $2$3}' | wget -i- -c \
 -B https://www.x.org/pub/individual/ &&
 grep -v '^#' ../$APP_LISTING/legacy.dat | awk '{print $1 " " $3}' > ../$APP_LISTING/Xorg-Legacy.md5 &&
-md5sum -c ../$APP_LISTING/Xorg-Legacy.md5 && cd ..
+md5sum -c ../$APP_LISTING/Xorg-Legacy.md5 && 
+echo "81e2d19bd74288f4ddd2476b466c3269 xterm-363.tgz" >> ../$APP_LISTING/Xorg-Legacy.md5 && 
+cd ..
 
 # Снимаем флаг
 sed -i 's/ETAP6_WGET_FLAG="'$FLAGSET'"/ETAP6_WGET_FLAG=" "/' config.sh
