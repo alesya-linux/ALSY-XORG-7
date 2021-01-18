@@ -40,13 +40,13 @@ if [ $? -eq 0 ]; then
       cd ..
     fi &&
     if [ -x $sapp/configure ]; then
-       
-       if [ -f ../../../../APP_PATCHES/systemd-247-upstream_fixes-1.patch ]; then
-         cp -a ../../../../APP_PATCHES/systemd-247-upstream_fixes-1.patch systemd-247-upstream_fixes-1.patch  
+       filename="systemd-247-upstream_fixes-1.patch"
+       if [ -f ../../../../APP_PATCHES/$filename ]; then
+         cp -a ../../../../APP_PATCHES/$filename $filename  
        fi
        
-       if [ ! -f systemd-247-upstream_fixes-1.patch ]; then
-         filedwnld="http://www.linuxfromscratch.org/patches/blfs/svn/systemd-247-upstream_fixes-1.patch"
+       if [ ! -f $filename ]; then
+         filedwnld="http://www.linuxfromscratch.org/patches/blfs/svn/$filename"
          wget $filedwnld 
          if [ $? -ne 0 ]; then
            exit 1
@@ -54,7 +54,7 @@ if [ $? -eq 0 ]; then
        fi
        
        if [ $? -eq 0 ]; then
-         cd $sapp && patch -Np1 -i ../systemd-247-upstream_fixes-1.patch
+         cd $sapp && patch -Np1 -i ../$filename
          if [ $? -eq 0 ]; then           
            sed -i 's/GROUP="render", //' rules.d/50-udev-default.rules.in &&
            meson --prefix=$XORG_PREFIX                        \
