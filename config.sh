@@ -3,10 +3,11 @@ FLAGSET="X"
 ETAP1_FLAG=" " # This is Flag compile for file XORG-7.md5
 ETAP2_FLAG=" " # This is Flag compile for file app-7.md5 
 ETAP3_FLAG=" " # This is Flag compile for file font-7.md5 
-ETAP4_FLAG=" " # This is Flag compile for file XorgInputDrivers.md5
+ETAP4_FLAG="X" # This is Flag compile for file XorgInputDrivers.md5
 ETAP5_FLAG=" " # This is Flag compile for file XorgVideoDrivers.md5
 ETAP6_FLAG=" " # This is Flag compile for file Xorg-Legacy.md5
 ETAP6_WGET_FLAG=" "
+CHECK_MD5SUM_FLAG="X"
 export SOURCE_DATE_EPOCH="$(date +%s)";
 
 if [ "$( echo $1 | sed 's/--prefix=//' )" != ""  ]; then
@@ -99,7 +100,17 @@ chmod u+x config.sh
 ./config.sh
 check_last "config"
 if [ -f $APPLICATION_SITE/$packagedir/$package ]; then
-  MD5SUMFILE="$(md5sum $APPLICATION_SITE/$packagedir/$package)"
+  MD5SUMFILE=$( md5sum $APPLICATION_SITE/$packagedir/$package | cut -d" " -f1 )
+fi
+if [ "$CHECK_MD5SUM_FLAG" == "X" ]; then  
+  if [ "$MD5SUMFILE" != "$CURRMD5SUM" ]; then
+    echo "Error check md5sum for file: $APPLICATION_SITE/$packagedir/$package"
+    echo "$CURRMD5SUM"
+    echo "$MD5SUMFILE"
+    exit 1
+  else
+    MD5SUMFILE="$(md5sum $APPLICATION_SITE/$packagedir/$package)"
+  fi
 fi
 make      
 check_last "make"
@@ -113,6 +124,7 @@ for package in $(grep -v '^#' $APP_LISTING/XORG-7.md5 | awk '{print $2}')
 do  
   packagedir=${package%.tar.*}
   typearchive=${package#*.tar.*}
+  CURRMD5SUM=$( grep $package $APP_LISTING/XORG-7.md5 | awk '{print $1}' )
   
 export ALSY_XORG_APP_CONFIG_ARCHIVE_TYPE="$typearchive"
 if [ ! -d $APP_COMPILE/$packagedir ]; then
@@ -363,12 +375,13 @@ echo "--- check xorg-server......"
 pkg-config --modversion xorg-server
 
 if [ "$ETAP4_FLAG" == "X" ]; then
-
+COMPILEFILE="$APP_LISTING/XorgInputDrivers.md5"
 # List Xorg Input Drivers
-for package in $(grep -v '^#' $APP_LISTING/XorgInputDrivers.md5 | awk '{print $2}')
+for package in $(grep -v '^#' $COMPILEFILE | awk '{print $2}')
 do
 packagedir=${package%.tar.*}
 typearchive=${package#*.tar.*}
+CURRMD5SUM=$(grep -v '^#' $COMPILEFILE | grep $package | cut -d" " -f1)
 export ALSY_XORG_APP_CONFIG_ARCHIVE_TYPE="$typearchive"
 if [ ! -d $APP_COMPILE/$packagedir ]; then
   mkdir -p $APP_COMPILE/$packagedir
