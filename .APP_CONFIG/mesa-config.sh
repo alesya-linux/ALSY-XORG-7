@@ -40,11 +40,11 @@ if [ $? -eq 0 ]; then
     else
 GALLIUM_DRV="i915,iris,nouveau,svga,virgl"
 DRI_DRIVERS="i965,nouveau"
-      filemaname="mesa-20.3.3-add_xdemos-1.patch"
+      filename="mesa-20.3.3-add_xdemos-1.patch"
       filedwnld="http://www.linuxfromscratch.org/patches/blfs/svn/$filemaname"
       if [ -f ../../../../APP_PATCHES/$filename ]; then
         cp -a ../../../../APP_PATCHES/$filename $filename  
-      fi       
+      fi
       if [ ! -f $filename ]; then         
         wget $filedwnld 
         if [ $? -ne 0 ]; then
