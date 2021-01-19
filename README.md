@@ -49,7 +49,8 @@
   + 91875e67c704ca3db51c3cba3cacef16  APP_PACKAGE.zip
   
   + https://files.webmoney.ru/files/XE2Dr8yI
-  + FILE:  APP_PACKAGE.zip  MD5SUM:  534208cf16bddf1173d2b17482952aca  
+  + FILE:    APP_PACKAGE.zip  
+  + MD5SUM:  534208cf16bddf1173d2b17482952aca  
   
   Распакуйте в папку APP_PACKAGE и они будут браться от туда,  
   если в данной папке, не будет нужного пакета,  
