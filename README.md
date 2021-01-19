@@ -54,11 +54,11 @@
   
 * Требования к ПО (для выполнения установки)
   +  ОС Linux GNU
-  +  glibc >= 2.19
-  +  gcc >= 4.7
-  +  binutils >= 2.19
-  +  python2 > 2.7
-  +  python3 > 3.0
+  +  GNU libc (glibc) >= 2.19
+  +  GNU Compiler Collection (gcc) >= 4.7
+  +  GNU binutils >= 2.19
+  +  Python2 > 2.7
+  +  Python3 > 3.0
   +  Ninja v1.5 or newer
   +  GNU Wget >= 1.14
   +  GNU Make >= 4.3
