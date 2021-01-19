@@ -1,33 +1,29 @@
 ﻿# ALSY-XORG-7
 
 * Здесь находятся скрипты которые помогают выполнить  
-  полностью автоматическую сборку для X Window system,  
-  в систему будет установлен Xorg-Server-1.20.10   
-  вместе со всем необходимым,   
-  шрифтами (Xorg-Font),  
-  встроенными приложениями (Xorg-App),  
-  библиотеками (Xorg-Lib), 
-  драйверами ввода (Xorg Input Drivers),  
-  драйверами видео карт (Xorg Video Drivers)  
-  и зависимостями такими как например: mesa-20.3.2,  
-    freetype-2.10.4,  
-    fontconfig-2.13.1, 
-    harfbuzz-2.7.4, 
-    libdrm-2.4.104, 
-    libunwind-1.5.0, 
-    libpng-1.6.37,  
-    zlib-1.2.11 
-    и другими, чтобы узнать подробнее 
-    смотри списки установки в папке .APP_LISTING:  
-      1. XORG-7.md5 
-      2. app-7.md5 
-      3. font-7.md5  
+  полностью автоматическую сборку для X Window system.
+  
+* В систему будет установлен Xorg-Server-1.20.10   
+  вместе со всем необходимым:
+    1. шрифтами (Xorg-Font)
+    2. встроенными приложениями (Xorg-App)
+    3. библиотеками (Xorg-Lib)
+    4. драйверами ввода (Xorg Input Drivers)
+    5. драйверами видео карт (Xorg Video Drivers)
+    6. зависимостями такими как например: 
+       mesa-20.3.2, freetype-2.10.4, fontconfig-2.13.1, harfbuzz-2.7.4,  
+       libdrm-2.4.104, libunwind-1.5.0, libpng-1.6.37, zlib-1.2.11  
+       и другими, чтобы узнать подробнее смотри списки установки 
+       в папке .APP_LISTING: (XORG-7.md5 app-7.md5 font-7.md5 и т.д.)
 
 * Для установки в систему Linux, необходимо выполнить команду:
+
   1. ./config.sh                              
   2. make         
   3. sudo make install
-  или
+
+* Альтернативный вариант установки:
+
   1. ./config.sh --prefix=/usr/{you_new_dir}
   2. make
   3. su -c "make install"
