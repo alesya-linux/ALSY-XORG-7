@@ -44,15 +44,12 @@
      который потом уже можно будет смонтировать на любую папку.  
     
 * Все установочные пакеты можно предварительно скачать по ссылке:
+    
+  +  FILELINK:    https://files.webmoney.ru/files/XE2Dr8yI  
+  +  FILENAME:    APP_PACKAGE.zip  
+  +  FILEMD5SUM:  534208cf16bddf1173d2b17482952aca  
   
-  + https://files.webmoney.ru/files/Gc8IkfkB  
-  + 91875e67c704ca3db51c3cba3cacef16  APP_PACKAGE.zip
-  
-  + https://files.webmoney.ru/files/XE2Dr8yI
-  + FILE:    APP_PACKAGE.zip  
-  + MD5SUM:  534208cf16bddf1173d2b17482952aca  
-  
-  Распакуйте в папку APP_PACKAGE и они будут браться от туда,  
+  + Распакуйте в папку APP_PACKAGE и они будут браться от туда,  
   если в данной папке, не будет нужного пакета,  
   он будет скачен командой wget  
   
