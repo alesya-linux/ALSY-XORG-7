@@ -45,7 +45,7 @@
 
 * Все установочные пакеты можно предварительно скачать по ссылке:
   
-  https://files.webmoney.ru/files/Gc8IkfkB
+  https://files.webmoney.ru/files/Gc8IkfkB  91875e67c704ca3db51c3cba3cacef16  APP_PACKAGE.zip
   
   Распакуйте в папку APP_PACKAGE и они будут браться от туда,  
   если в данной папке, не будет нужного пакета,  
