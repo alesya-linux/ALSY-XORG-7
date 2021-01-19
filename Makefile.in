@@ -4,14 +4,13 @@
 XORG_PREFIX="/usr/X11R7"
 BUILD="build"
 PREFIX_X=${PREFIX}
-CURR_DIR=${CURRDIR}
+INSTALL_DIR=${INSTALLDIR}
 all:
-	mkdir -p ${PWD}/.install
+	mkdir -p .install
 install:
-	pushd ${CURR_DIR}/.install && popd
 	mv -t .install ${PREFIX_X}
-	mkdir -p ${PREFIX_X}
-	cd ${PREFIX_X}/.. && mv -t . ${CURR_DIR}/.install/*
+	mv .install/* ${INSTALL_DIR}
+	chmod u+x install.sh
 	./install.sh ${PREFIX_X} ${XORG_PREFIX}
 clean:
 	rm -rfd ${BUILD}

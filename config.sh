@@ -3,7 +3,7 @@ FLAGSET="X"
 ETAP1_FLAG=" " # This is Flag compile for file XORG-7.md5
 ETAP2_FLAG=" " # This is Flag compile for file app-7.md5 
 ETAP3_FLAG=" " # This is Flag compile for file font-7.md5 
-ETAP4_FLAG="X" # This is Flag compile for file XorgInputDrivers.md5
+ETAP4_FLAG=" " # This is Flag compile for file XorgInputDrivers.md5
 ETAP5_FLAG=" " # This is Flag compile for file XorgVideoDrivers.md5
 ETAP6_FLAG=" " # This is Flag compile for file Xorg-Legacy.md5
 ETAP6_WGET_FLAG=" "
@@ -16,15 +16,24 @@ else
   export XORG_PREFIX="/usr/src/tools/XORG-7"
 fi
 
-CURR_DIR=$PWD
-
 prefix=$(echo $XORG_PREFIX | sed 's/\//\\\//g' )
 cp -a Makefile.in Makefile.am
 sed -i 's/\${PREFIX}/'$prefix'/' Makefile.am
-CURRDIR=$(echo $CURR_DIR | sed 's/\//\\\//g' )
-sed 's/\${CURRDIR}/'$CURRDIR'/' Makefile.am > Makefile
 
-export XORG_PREFIX="/usr/src/tools/XORG-7"
+INSTALL_DIR=$XORG_PREFIX
+l1="$(expr length $INSTALL_DIR)"
+INSTALL_DIR="${XORG_PREFIX%/*}"
+if [ "$INSTALL_DIR" != "" ]; then
+  l2="$(expr length $INSTALL_DIR)"  
+fi
+let r1=l1-1
+if [ "$r1" == "$l2" ]; then
+  INSTALL_DIR="${INSTALL_DIR%/*}"
+fi
+
+INSTALLDIR=$(echo $INSTALL_DIR | sed 's/\//\\\//g' )
+sed 's/\${INSTALLDIR}/'$INSTALLDIR'/' Makefile.am > Makefile
+
 export XORG_CONFIG="--prefix=$XORG_PREFIX              \
                     --sysconfdir=$XORG_PREFIX/etc      \
                     --localstatedir=$XORG_PREFIX/var   \
