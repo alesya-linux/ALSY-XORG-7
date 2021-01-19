@@ -99,7 +99,7 @@ https://files.webmoney.ru/files/Gc8IkfkB
 10. GNU Autoconf >= 2.7
 11. pkg-config >= 0.29
 12. GNU Awk >= 3.1.8
-13. GNU sed version 4.2.1
+13. GNU sed version 4.2.1 or newer
  
 # Зависимости установленного XORG-7
 1. glibc - той версии которая использовалась при выполнении скриптов установки
