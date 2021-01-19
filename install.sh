@@ -60,4 +60,4 @@ mkdir -p $XORG_PREFIX/usr/share
 ln -svf $XORG_PREFIX/share/X11 $XORG_PREFIX/usr/share/X11
 # If building KDE, some cmake files look for Xorg in places other than $XORG_PREFIX. Allow cmake to find Xorg with:
 ln -svf $XORG_PREFIX $XORG_PREFIX/usr/X11R6
-ln -svf $XORG_PREFIX $XORG_PREFIX/$XORG_VIRTUAL
+ln -svf $XORG_PREFIX $XORG_PREFIX/$XORG_VIRTUAL  
