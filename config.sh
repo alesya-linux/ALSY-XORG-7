@@ -48,7 +48,7 @@ export PATH="$XORG_PREFIX/bin:$PATH"
 
 LIBRARY_PATH=""
 C_INCLUDE_PATH=""
-CPLUS_INCLUDE_PATH="$C_INCLUDE_PATH"
+CPLUS_INCLUDE_PATH=""
 LIBRARY_PATH="$XORG_PREFIX/lib:$LIBRARY_PATH"
 C_INCLUDE_PATH="$XORG_PREFIX/include:$C_INCLUDE_PATH"
 CPLUS_INCLUDE_PATH="$XORG_PREFIX/include:$CPLUS_INCLUDE_PATH"
@@ -148,6 +148,9 @@ fi
 
 cp $APP_MAKEFILE/proto-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
 case $packagedir in
+  file* )
+    cp -r $APP_CONFIG/file-config.sh $APP_COMPILE/$packagedir/config.sh
+  ;;
   util-linux* )
     cp -r $APP_CONFIG/util-linux-config.sh $APP_COMPILE/$packagedir/config.sh
   ;;
