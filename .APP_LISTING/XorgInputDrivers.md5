@@ -3,7 +3,7 @@ f222e258c129c6da2f8f9cfe7f1ed745  libtirpc-1.3.1.tar.bz2
 b34ada4b7b9528798589d12d332af02c  libcap1-2.46.tar.gz
 155f2a31d07077b2c63a1f135876c31b  Linux-PAM-1.5.1.tar.xz
 b34ada4b7b9528798589d12d332af02c  libcap2-2.46.tar.gz
-8c12dc19dd7e0d02d2bb6596eb5a71c7  libpcap-1.10.0.tar.gz
+#8c12dc19dd7e0d02d2bb6596eb5a71c7  libpcap-1.10.0.tar.gz
 84f58dec00b60f2dc8fd1c9709291cc7  attr-2.4.47.src.tar.gz
 a61415312426e9c2212bd7dc7929abda  acl-2.2.52.src.tar.gz
 b0d6e603b814908acc69db29bbfb023c  systemd-247.tar.gz
