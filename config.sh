@@ -412,6 +412,14 @@ if [ -f $APP_PACKAGE/$package ]; then
 fi 
 
   case $packagedir in
+  attr* )
+    cp -r $APP_CONFIG/attr-config.sh $APP_COMPILE/$packagedir/config.sh
+    cp $APP_MAKEFILE/attr-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
+  ;;
+  acl* )
+    cp -r $APP_CONFIG/acl-config.sh $APP_COMPILE/$packagedir/config.sh
+    cp $APP_MAKEFILE/acl-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
+  ;;
   xf86-input-wacom* )
     cp -r $APP_CONFIG/x86-wacom-input.config.sh $APP_COMPILE/$packagedir/config.sh
     cp $APP_MAKEFILE/proto-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
