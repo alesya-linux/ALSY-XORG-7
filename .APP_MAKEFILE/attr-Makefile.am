@@ -1,0 +1,8 @@
+#!/bin/make
+app="@alsy.app.name"
+compile:
+	cd ../build/${app}/attr-2.4.47 && sed -i -e 's|/@pkg_name@|&-@pkg_version@|' include/builddefs.in && make
+install:
+	cd ../build/${app}/attr-2.4.47 && make install install-dev install-lib
+clean:
+	rm -rfd ../build/${app}
