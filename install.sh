@@ -48,7 +48,7 @@ CPLUS_INCLUDE_PATH="$XORG_PREFIX/include:$CPLUS_INCLUDE_PATH"
 ACLOCAL="aclocal -I $XORG_PREFIX/share/aclocal"
 export PATH PKG_CONFIG_PATH ACLOCAL LIBRARY_PATH C_INCLUDE_PATH CPLUS_INCLUDE_PATH
 EOF
-chmod 744 $XORG_PREFIX/etc/profile.d/xorg.sh
+chmod 755 $XORG_PREFIX/etc/profile.d/xorg.sh
 echo "$XORG_PREFIX/lib" >> /etc/ld.so.conf
 cp -a /etc/ld.so.conf $XORG_PREFIX/etc/ld.so.conf
 if [ -f /etc/man_db.conf ]; then
