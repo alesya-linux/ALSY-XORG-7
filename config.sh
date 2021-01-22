@@ -480,7 +480,7 @@ fi # End Etap 4
 
 
 if [ "$ETAP5_FLAG" == "X" ]; then
-COMPILEFILE="APP_LISTING/XorgVideoDrivers.md5"
+COMPILEFILE="$APP_LISTING/XorgVideoDrivers.md5"
 # List Xorg Video Drivers
 for package in $(grep -v '^#' $COMPILEFILE | awk '{print $2}')
 do
@@ -517,7 +517,7 @@ fi # End Etap 5
 
 
 if [ "$ETAP6_FLAG" == "X" ]; then
-COMPILEFILE="APP_LISTING/Xorg-Legacy.md5"
+COMPILEFILE="$APP_LISTING/Xorg-Legacy.md5"
 # Xorg Legacy Font
 if [ "$ETAP6_WGET_FLAG" == "X" ]; then
 
