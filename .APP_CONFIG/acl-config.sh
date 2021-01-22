@@ -29,14 +29,8 @@ if [ $? -eq 0 ]; then
   cd ../build
   if [ $? -eq 0 ]; then    
     pushd $app/$sapp &&    
-    if [[ -f $sapp/configure.ac && ! -x $sapp/configure ]]; then
-      cd $sapp   &&
-      libtoolize && 
-      autoreconf -fiv &&
-      cd ..
-    fi &&
     if [ -x configure ]; then    
-      ./configure $XORG_CONFIG && popd
-    fi 
+      ./configure $XORG_CONFIG  
+    fi && popd    
   fi
 fi
