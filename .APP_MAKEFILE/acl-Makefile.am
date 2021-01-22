@@ -1,0 +1,8 @@
+#!/bin/make
+app="@alsy.app.name"
+compile:
+	cd ../build/${app}/acl-2.2.52 && make
+install:
+	cd ../build/${app}/acl-2.2.52 && make install install-dev install-lib
+clean:
+	rm -rfd ../build/${app}
