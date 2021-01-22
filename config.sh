@@ -148,6 +148,10 @@ fi
 
 cp $APP_MAKEFILE/proto-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
 case $packagedir in
+  V3* )
+    cp -r $APP_CONFIG/V3-config.sh $APP_COMPILE/$packagedir/config.sh
+    cp -r $APP_MAKEFILE/lm_sensors-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
+  ;;
   file* )
     cp -r $APP_CONFIG/file-config.sh $APP_COMPILE/$packagedir/config.sh
   ;;
