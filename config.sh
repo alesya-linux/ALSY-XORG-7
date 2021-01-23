@@ -41,9 +41,9 @@ export XORG_CONFIG="--prefix=$XORG_PREFIX              \
                     --localstatedir=$XORG_PREFIX/var   \
                     --disable-static"
 SAVEPATH="$PATH"
-PKG_CONFIG_PATH="$XORG_PREFIX/lib64/pkgconfig"
+PKG_CONFIG_PATH="$XORG_PREFIX/lib64/pkgconfig:$XORG_PREFIX/lib/pkgconfig"
 PKG_CONFIG_PATH="$XORG_PREFIX/share/pkgconfig:$PKG_CONFIG_PATH"
-export PKG_CONFIG_PATH="$XORG_PREFIX/lib/pkgconfig:$PKG_CONFIG_PATH" 
+export PKG_CONFIG_PATH
 export PATH="$XORG_PREFIX/bin:$PATH"
 
 LIBRARY_PATH=""
@@ -129,6 +129,7 @@ make_install
 popd
 }
 
+
 if [ "$ETAP1_FLAG" == "X" ]; then
 COMPILEFILE="$APP_LISTING/XORG-7.md5"
 for package in $(grep -v '^#' $COMPILEFILE | awk '{print $2}')
@@ -144,10 +145,29 @@ fi
 
 if [ -f $APP_PACKAGE/$package ]; then
   cp -rfv $APP_PACKAGE/$package $APP_COMPILE/$packagedir
+  if [ -L $APP_PACKAGE/$package ]; then
+    targetfile=$(ls -l $APP_PACKAGE/$package | cut -d">" -f2 | cut -d" " -f2)
+    cp -rfv $APP_PACKAGE/$targetfile $APP_COMPILE/$packagedir
+  fi
 fi
 
 cp $APP_MAKEFILE/proto-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
 case $packagedir in
+  gperf* )
+    cp -r $APP_CONFIG/gperf-config.sh $APP_COMPILE/$packagedir/config.sh
+  ;;
+  ncurses* )
+    cp -r $APP_CONFIG/ncurses-config.sh $APP_COMPILE/$packagedir/config.sh
+  ;;
+  pcre2* )
+    cp -r $APP_CONFIG/pcre2-config.sh $APP_COMPILE/$packagedir/config.sh
+  ;; 
+  pcre* )
+    cp -r $APP_CONFIG/pcre-config.sh $APP_COMPILE/$packagedir/config.sh
+  ;;
+  gettext* )
+    cp -r $APP_CONFIG/gettext-config.sh $APP_COMPILE/$packagedir/config.sh
+  ;;
   V3* )
     cp -r $APP_CONFIG/V3-config.sh $APP_COMPILE/$packagedir/config.sh
     cp -r $APP_MAKEFILE/lm_sensors-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
