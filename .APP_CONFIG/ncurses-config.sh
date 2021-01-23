@@ -21,7 +21,9 @@ cp $app"."$arh ../build &&
 cd    ../build &&
 tar -xf $app"."$arh &&
 cd $app &&
-./configure $XORG_CONFIG   \
-            --with-termlib 
-#            --with-pcre2  \
-#            --with-shared
+./configure $XORG_CONFIG                                        \
+            --with-termlib                                      \
+            --with-pcre2                                        \
+            --with-pkg-config                                   \
+            --with-pkg-config-libdir=$XORG_PREFIX/lib/pkgconfig \
+            --with-shared
