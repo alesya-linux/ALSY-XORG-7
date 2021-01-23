@@ -153,6 +153,9 @@ fi
 
 cp $APP_MAKEFILE/proto-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
 case $packagedir in
+  readline* )
+    cp -r $APP_CONFIG/readline-config.sh $APP_COMPILE/$packagedir/config.sh
+  ;;
   gperf* )
     cp -r $APP_CONFIG/gperf-config.sh $APP_COMPILE/$packagedir/config.sh
   ;;
