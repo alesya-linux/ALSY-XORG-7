@@ -26,10 +26,8 @@ fi
 sed 's\@alsy.app.name\'$app'\g' Makefile.am > Makefile &&
 
 mkdir -p ../build &&
-cp $app"."$arh ../build &&
-cd    ../build &&
-tar -xf $app"."$arh &&
-cd $app &&
+tar -xf $app.$arch -C ../build &&
+cd ../build/$app &&
 ./configure $XORG_CONFIG \
             --with-termlib \
             --without-debug \
