@@ -1,8 +1,17 @@
 #!/bin/bash
 
-app="ncurses-6.2"
-arh="tar.gz"
-sapp="ncurses-6.2"
+app="${PWD##*/}"
+version="${app##*-}"
+app="${app%-*}"
+arch="tar.${ALSY_XORG_APP_CONFIG_ARCHIVE_TYPE}"
+sapp="$app-$version"
+
+if [ ! -f $app-$version.$arch ]; then  
+  filedwnld="https://ftp.gnu.org/gnu/$app/$app-$version.$arch"
+  wget $filedwnld -O $app-$version.$arch --no-check-certificate
+fi
+
+app=$sapp
 
 if [ -d ../build/$sapp ]; then
   rm -rfd ../build/$sapp
