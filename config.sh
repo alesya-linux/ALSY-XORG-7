@@ -312,7 +312,7 @@ sed -i 's/ETAP2_FLAG="'$FLAGSET'"/ETAP2_FLAG=" "/' config.sh
 fi
 
 if [ "$ETAP3_FLAG" == "X" ]; then
-COMPILEFILE="APP_LISTING/font-7.md5"
+COMPILEFILE="$APP_LISTING/font-7.md5"
 # List Xorg Font
 for package in $(grep -v '^#' $COMPILEFILE | awk '{print $2}')
 do
