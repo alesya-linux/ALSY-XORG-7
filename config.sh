@@ -463,6 +463,7 @@ fi
   Linux-PAM* )
     cp -r $APP_CONFIG/Linux-PAM-config.sh $APP_COMPILE/$packagedir/config.sh
     cp -r $APP_MAKEFILE/pam-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
+    cp -r $APP_CONFIG/pam-install.sh $APP_COMPILE/$packagedir/install.sh
   ;;
   systemd* )
     cp -r $APP_CONFIG/systemd-config.sh $APP_COMPILE/$packagedir/config.sh
