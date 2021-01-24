@@ -25,12 +25,13 @@ fi
 mkdir -p $XORG_PREFIX/etc/profile.d/
 
 cat > $XORG_PREFIX/etc/profile.d/xorg.sh << EOF
+ALSY_XORG="1.0.5"
 XORG_PREFIX="$XORG_VIRTUAL"
 XORG_CONFIG="--prefix=\$XORG_PREFIX               \
              --sysconfdir=\$XORG_PREFIX/etc       \
              --localstatedir=\$XORG_PREFIX/var    \
              --disable-static"
-export XORG_PREFIX XORG_CONFIG
+export XORG_PREFIX XORG_CONFIG ALSY_XORG
 PATH="$XORG_PREFIX/bin:$PATH"
 PKG_CONFIG_PATH="\
 /lib/pkgconfig:\
