@@ -22,14 +22,6 @@ if [ -d ../build/$app ]; then
  fi
 fi
 
-# check libtirpc
-if [ "$(pkg-config --modversion libtirpc | wc -w)" == "1" ]; then
-  echo "check libtirpc.......$(pkg-config --modversion libtirpc)...[ok]"
-else
-  echo "Error: libtirpc not found!"
-  exit 1
-fi
-
 sapp="PCRE2-$version"
 mkdir -p ../build &&
 tar -xf "$app"."$arch" -C ../build
