@@ -4,8 +4,6 @@ compile:
 	cd ../build/${app} && make
 install:
 	cd ../build/${app} && make install
-	mkdir -p ${XORG_PREFIX}/include/security
-	cp -a ${XORG_PREFIX}/include/pam*.h ${XORG_PREFIX}/include/security
-	cp -a ${XORG_PREFIX}/include/_pam*.h ${XORG_PREFIX}/include/security
+	./install.sh ${XORG_PREFIX}
 clean:
 	rm -rfd ../build/${app}
