@@ -153,6 +153,12 @@ fi
 
 cp $APP_MAKEFILE/proto-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
 case $packagedir in
+  libgcrypt* )
+    cp -r $APP_CONFIG/libgcrypt-config.sh $APP_COMPILE/$packagedir/config.sh
+  ;;
+  libgpg* )
+    cp -r $APP_CONFIG/libgpg-error-config.sh $APP_COMPILE/$packagedir/config.sh
+  ;;
   readline* )
     cp -r $APP_CONFIG/readline-config.sh $APP_COMPILE/$packagedir/config.sh
   ;;
