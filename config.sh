@@ -108,6 +108,9 @@ INSTALL_APPLICATION="$packagedir"
  
 pushd $packagedir
 chmod u+x config.sh
+if [ -f install.sh ]; then
+chmod u+x install.sh
+fi
 ./config.sh
 check_last "config"
 if [ -f $APPLICATION_SITE/$packagedir/$package ]; then
