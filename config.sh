@@ -332,6 +332,9 @@ fi
   cp $APP_MAKEFILE/proto-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
   
   case $packagedir in 
+  xz* )
+    cp -r $APP_CONFIG/xz-config.sh $APP_COMPILE/$packagedir/config.sh
+  ;;  
   xkeyboard-config* )
     cp -r $APP_CONFIG/XKeyboardConfig.sh $APP_COMPILE/$packagedir/config.sh
   ;;
