@@ -1,0 +1,8 @@
+#!/bin/make
+app="@alsy.app.name"
+compile:
+	cd ../build/${app}/${app} && export CFLAGS="-g -O2 -fPIC" && make CFLAGS="-g -O2 -fPIC"
+install:
+	cd ../build/${app}/${app} && make install PREFIX=${XORG_PREFIX}
+clean:
+	rm -rfd ../build/${app}
