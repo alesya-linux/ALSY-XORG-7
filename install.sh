@@ -40,9 +40,9 @@ PKG_CONFIG_PATH="\
 /usr/lib/pkgconfig:\
 /usr/lib64/pkgconfig:\
 /usr/local/lib/pkgconfig:\
-/usr/local/lib64/pkgconfig\
+/usr/local/lib64/pkgconfig:\
+/share/pkgconfig:$XORG_PREFIX/lib/pkgconfig\
 "
-PKG_CONFIG_PATH="$XORG_PREFIX/share/pkgconfig:$XORG_PREFIX/lib/pkgconfig:$PKG_CONFIG_PATH"
 LIBRARY_PATH="$XORG_PREFIX/lib:$LIBRARY_PATH"
 C_INCLUDE_PATH="$XORG_PREFIX/include:$C_INCLUDE_PATH"
 CPLUS_INCLUDE_PATH="$XORG_PREFIX/include:$CPLUS_INCLUDE_PATH"
