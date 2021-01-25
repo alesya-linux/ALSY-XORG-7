@@ -30,6 +30,7 @@ if [ $? -eq 0 ]; then
                 --enable-pcre16                   \
                 --enable-pcre32                   \
                 --enable-pcregrep-libz            \
+                --enable-pcre2grep-libbz2         \
                 --enable-pcretest-libreadline     \
                 --disable-static && popd
   fi
