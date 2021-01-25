@@ -156,6 +156,13 @@ fi
 
 cp $APP_MAKEFILE/proto-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
 case $packagedir in
+  bzip2* )
+    cp -r $APP_CONFIG/bzip2-config.sh $APP_COMPILE/$packagedir/config.sh
+    cp -r $APP_MAKEFILE/bzip2-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
+  ;;
+  xz* )
+    cp -r $APP_CONFIG/xz-config.sh $APP_COMPILE/$packagedir/config.sh
+  ;;
   libgcrypt* )
     cp -r $APP_CONFIG/libgcrypt-config.sh $APP_COMPILE/$packagedir/config.sh
   ;;
