@@ -23,12 +23,14 @@ fd07d0d77e92b0a72ca1740a72322837  libXfixes-5.0.3.tar.gz
 ea870df8a8fca769f2e73ca129065027  libXdamage-1.1.5.tar.gz
 c0cbb153e3a79d8780079d1850b2eda8  libfontenc-1.1.4.tar.gz
 0e6c0e9b218be3ba3e26e1d23b1c80dd  freetype-2.10.4.tar.xz
+0d270c997aff29708c74d53f599ef717  xz-5.2.5.tar.gz
+00b516f4704d4a7cb50a1d97e6e8e15b  bzip2-1.0.6.tar.gz
 1c450306053622803a25647d88f80f25  file-5.39.tar.gz
-bd7e7421ff3fa2e2d5429229ecfad095  pcre2-10.36.tar.bz2
 e812da327b1c2214ac1aed440ea3ae8d  ncurses-6.2.tar.gz
 e9557dd5b1409f5d7b37ef717c64518e  readline-8.1.tar.gz
-9e251c0a618ad0824b51117d5d9db87e  gperf-3.1.tar.gz
+bd7e7421ff3fa2e2d5429229ecfad095  pcre2-10.36.tar.bz2
 cf7326204cc46c755b5b2608033d9d24  pcre-8.44.tar.bz2
+9e251c0a618ad0824b51117d5d9db87e  gperf-3.1.tar.gz
 742b4636cca3be155d107cf0e114890e  util-linux-2.36.tar.gz
 36cdea1058ef13cbbfdabe6cb019dc1c  fontconfig-2.13.1.tar.bz2
 6d8393e6fb84edfb15997d1c5ba35b1b  harfbuzz-2.7.4.tar.xz
