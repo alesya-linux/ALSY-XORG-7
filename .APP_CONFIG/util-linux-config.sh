@@ -36,8 +36,18 @@ if [ $? -eq 0 ]; then
       cd ..
     fi &&
     if [ -x $sapp/configure ]; then    
-      ./$sapp/configure $XORG_CONFIG --without-python --without-systemd --disable-runuser \
-      --host=x86_64-alesya-linux && popd
+      ./$sapp/configure --prefix=$XORG_PREFIX \
+                        --disable-chfn-chsh   \
+                        --disable-login       \
+                        --disable-nologin     \
+                        --disable-su          \
+                        --disable-setpriv     \
+                        --disable-runuser     \
+                        --disable-pylibmount  \
+                        --disable-static      \
+                        --without-python      \
+                        --without-systemd     \
+                        --without-systemdsystemunitdir && popd
     fi 
   fi
 fi
