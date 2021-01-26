@@ -65,7 +65,7 @@ if [ $? -eq 0 ]; then
                   -Dinstall-tests=false                       \
                   -Dldconfig=false                            \
                   -Dman=auto                                  \
-                  -Drootprefix=$XORG_PREFIX                   \
+                  -Drootprefix=$XORG_PREFIX/root              \
                   -Drootlibdir=$XORG_PREFIX/lib               \
                   -Dsplit-usr=true                            \
                   -Dsysusers=false                            \
