@@ -48,9 +48,9 @@ PKG_CONFIG_PATH="\
 /usr/local/lib64/pkgconfig:\
 /share/pkgconfig:$XORG_PREFIX/lib/pkgconfig\
 "
-LIBRARY_PATH="$XORG_PREFIX/lib:$LIBRARY_PATH"
-C_INCLUDE_PATH="$XORG_PREFIX/include:$C_INCLUDE_PATH"
-CPLUS_INCLUDE_PATH="$XORG_PREFIX/include:$CPLUS_INCLUDE_PATH"
+LIBRARY_PATH="$XORG_PREFIX/lib:\$LIBRARY_PATH"
+C_INCLUDE_PATH="$XORG_PREFIX/include:\$C_INCLUDE_PATH"
+CPLUS_INCLUDE_PATH="$XORG_PREFIX/include:\$CPLUS_INCLUDE_PATH"
 ACLOCAL="aclocal -I $XORG_PREFIX/share/aclocal"
 export PATH PKG_CONFIG_PATH ACLOCAL LIBRARY_PATH C_INCLUDE_PATH CPLUS_INCLUDE_PATH
 EOF
@@ -67,6 +67,6 @@ ln -svf $XORG_PREFIX/share/X11 $XORG_PREFIX/usr/share/X11
 # If building KDE, some cmake files look for Xorg in places other than $XORG_PREFIX. Allow cmake to find Xorg with:
 ln -svf $XORG_PREFIX $XORG_PREFIX/usr/X11R6
 ln -svf $XORG_PREFIX $XORG_PREFIX/$XORG_VIRTUAL  
-if [ ! -f $XORG_PREFIX/XORG-7 ]; then
- ln -svf $XORG_PREFIX $XORG_PREFIX/XORG-7
+if [ ! -f $XORG_PREFIX/ALSY-XORG-7 ]; then
+ ln -svf $XORG_PREFIX $XORG_PREFIX/ALSY-XORG-7
 fi
