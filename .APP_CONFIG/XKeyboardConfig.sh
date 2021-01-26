@@ -36,7 +36,7 @@ if [ $? -eq 0 ]; then
       cd ..
     fi &&
     if [ -x $sapp/configure ]; then
-      ./$sapp/configure $XORG_CONFIG && popd
+      ./$sapp/configure $XORG_CONFIG --with-xkb-rules-symlink=xorg && popd
     fi 
   fi
 fi
