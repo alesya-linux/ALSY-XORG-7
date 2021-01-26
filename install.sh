@@ -1,3 +1,7 @@
+LIBRARY_PATH="/usr/libexec/gcc/x86_64-alesya-linux/"
+CPLUS_INCLUDE_PATH="/include/c++/9.2.0/"
+C_INCLUDE_PATH="/lib/gcc/x86_64-alesya-linux/9.2.0/include/"
+
 # Choose your installation prefix, and set the XORG_PREFIX variable with the following command:
 export XORG_PREFIX="$1"
 export XORG_VIRTUAL="$2"
@@ -27,12 +31,13 @@ mkdir -p $XORG_PREFIX/etc/profile.d/
 cat > $XORG_PREFIX/etc/profile.d/xorg.sh << EOF
 ALSY_XORG="1.0.5"
 XORG_PREFIX="$XORG_VIRTUAL"
-XORG_CONFIG="--prefix=\$XORG_PREFIX               \
-             --sysconfdir=\$XORG_PREFIX/etc       \
-             --localstatedir=\$XORG_PREFIX/var    \
-             --disable-static"
+XORG_CONFIG="\
+--prefix=\$XORG_PREFIX\
+--sysconfdir=\$XORG_PREFIX/etc\
+--localstatedir=\$XORG_PREFIX/var\
+--disable-static"
 export XORG_PREFIX XORG_CONFIG ALSY_XORG
-PATH="$XORG_PREFIX/bin:$PATH"
+PATH="$XORG_PREFIX/bin:\$PATH"
 PKG_CONFIG_PATH="\
 /lib/pkgconfig:\
 /lib32/pkgconfig:\
@@ -62,3 +67,6 @@ ln -svf $XORG_PREFIX/share/X11 $XORG_PREFIX/usr/share/X11
 # If building KDE, some cmake files look for Xorg in places other than $XORG_PREFIX. Allow cmake to find Xorg with:
 ln -svf $XORG_PREFIX $XORG_PREFIX/usr/X11R6
 ln -svf $XORG_PREFIX $XORG_PREFIX/$XORG_VIRTUAL  
+if [ ! -f $XORG_PREFIX/XORG-7 ]; then
+ ln -svf $XORG_PREFIX $XORG_PREFIX/XORG-7
+fi
