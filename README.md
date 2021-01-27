@@ -45,9 +45,10 @@
     
 * Все установочные пакеты можно предварительно скачать по ссылке:
     
-  +  FILELINK:    https://files.webmoney.ru/files/XE2Dr8yI  
+  +  FILELINK:    https://files.webmoney.ru/files/XVXEh5ga
   +  FILENAME:    APP_PACKAGE.zip  
-  +  FILEMD5SUM:  534208cf16bddf1173d2b17482952aca  
+  +  FILESIZE:    167.8 MB
+  +  FILEMD5SUM:  3f7ae2688da54c5c2f3c7de68d2b111c  
   
   + Распакуйте в папку APP_PACKAGE,  
   если в данной папке, не будет нужного пакета,  
