@@ -44,7 +44,7 @@ if [ $? -eq 0 ]; then
       ./$sapp/configure $XORG_CONFIG        \
                         --with-harfbuzz=yes \
                         --with-bzip2=yes    \
-                        --with-libpng=yes   \
+                        --with-png=yes      \
                         --with-zlib=yes && popd
 # !!! first install without harfbuzz then when it is installed reinstall freetype !!!    
 # And this is the second installation of freetype using harfbuzz !!!
