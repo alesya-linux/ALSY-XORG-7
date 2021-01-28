@@ -35,7 +35,7 @@ if [ $? -eq 0 ]; then
     fi &&
     if [ -x configure ]; then      
       ./configure --prefix=$XORG_PREFIX                  \
-                  --docdir=/usr/src/tools/share/doc/$app \
+                  --docdir=$XORG_PREFIX/share/doc/$app   \
                   --enable-unicode                       \
                   --enable-jit                           \
                   --enable-pcre2-16                      \
