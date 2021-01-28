@@ -29,10 +29,12 @@ mkdir -p ../build &&
 tar -xf $app.$arch -C ../build &&
 cd ../build/$app &&
 ./configure $XORG_CONFIG      \
-            --with-termlib    \              
+            --with-termlib    \
             --enable-widec    \
             --with-shared     \
             --with-pthread    \
             --with-pkg-config \
-            --with-pkg-config-libdir=$XORG_PREFIX/lib/pkgconfig \
+            --with-pkg-config-libdir=$XORG_PREFIX/lib/pkgconfig  
+            
+            
             
