@@ -41,10 +41,11 @@ if [ $? -eq 0 ]; then
       python3 -m pip install -U pip &&
       python3 -m pip install -U meson &&
       python3 -m pip install -U docwriter &&
-      ./$sapp/configure $XORG_CONFIG \
-      --with-harfbuzz=yes \
-      --with-bzip2=yes    \
-      --with-libpng=yes && popd
+      ./$sapp/configure $XORG_CONFIG        \
+                        --with-harfbuzz=yes \
+                        --with-bzip2=yes    \
+                        --with-libpng=yes   \
+                        --with-zlib=yes && popd
 # !!! first install without harfbuzz then when it is installed reinstall freetype !!!    
 # And this is the second installation of freetype using harfbuzz !!!
     fi 
