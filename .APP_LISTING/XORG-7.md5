@@ -34,7 +34,6 @@ cf7326204cc46c755b5b2608033d9d24  pcre-8.44.tar.bz2
 742b4636cca3be155d107cf0e114890e  util-linux-2.36.tar.gz
 36cdea1058ef13cbbfdabe6cb019dc1c  fontconfig-2.13.1.tar.bz2
 6d8393e6fb84edfb15997d1c5ba35b1b  harfbuzz-2.7.4.tar.xz
-0e6c0e9b218be3ba3e26e1d23b1c80dd  freetype2-2.10.4.tar.xz
 2dfd73533bb8fb738eee3ea3ccb7e216  libXfont2-2.0.4.tar.gz
 7978e2dee385a40e45513f3cea3f6d2c  libXft-2.3.3.tar.gz
 b64bf95134263fcf8880a9c18021e615  libXi-1.7.10.tar.gz
@@ -67,4 +66,5 @@ c4c81cbd8a93f87104d3f1209948b238  mesa-20.3.3.tar.xz
 516ff05a42157c86e32c6598321737af  libepoxy-1.5.5.tar.xz
 1c9f62f0778697a09d36121ead88e08e  zlib-1.2.11.tar.gz
 015e8e15db1eecde5f2eb9eb5b6e59e9  libpng-1.6.37.tar.xz
+0e6c0e9b218be3ba3e26e1d23b1c80dd  freetype2-2.10.4.tar.xz
 #XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX nettle-3.7.tar.gz
