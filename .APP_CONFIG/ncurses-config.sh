@@ -16,7 +16,7 @@ app=$sapp
 if [ -d ../build/$sapp ]; then
   rm -rfd ../build/$sapp
   echo -n "clean....."
-  if [ -d ../build ]; then
+  if [ -d ../build/$sapp ]; then
     echo "[ fail ]"
   else
     echo "[ ok ]"
