@@ -1,0 +1,10 @@
+#!/bin/make
+app="@alsy.app.name"
+INSTALLDIR=${XORG_PREFIX}
+compile:
+	cd ../build/${app} && make 
+install:
+	cd ../build/${app} && make DESTDIR=${INSTALLDIR} TIC_PATH=progs/tic install
+	./install.sh ${INSTALLDIR}
+clean:
+	rm -rd ../build
