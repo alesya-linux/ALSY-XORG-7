@@ -177,6 +177,8 @@ case $packagedir in
   ;;
   ncurses* )
     cp -r $APP_CONFIG/ncurses-config.sh $APP_COMPILE/$packagedir/config.sh
+    cp -r $APP_CONFIG/ncurses-install.sh $APP_COMPILE/$packagedir/install.sh
+    cp -r $APP_MAKEFILE/ncurses-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
   ;;
   pcre2* )
     cp -r $APP_CONFIG/pcre2-config.sh $APP_COMPILE/$packagedir/config.sh
