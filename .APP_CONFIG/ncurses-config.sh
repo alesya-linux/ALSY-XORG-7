@@ -42,9 +42,7 @@ popd
             --mandir=$XORG_PREFIX/share/man \
             --with-manpage-format=normal    \
             --enable-widec                  \
-            --with-shared                   \            
+            --with-shared                   \
             --with-pkg-config               \
             --with-pkg-config-libdir=$XORG_PREFIX/lib/pkgconfig  
-            
-            
             
