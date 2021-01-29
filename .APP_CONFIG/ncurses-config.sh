@@ -36,13 +36,5 @@ pushd build
   make -C progs tic
 popd
 
-./configure --prefix=$XORG_PREFIX           \
-            --host=x86_64-alesya-linux      \
-            --build=$(./config.guess)       \
-            --mandir=$XORG_PREFIX/share/man \
-            --with-manpage-format=normal    \
-            --enable-widec                  \
-            --with-shared                   \
-            --with-pkg-config               \
-            --with-pkg-config-libdir=$XORG_PREFIX/lib/pkgconfig  
-            
+./configure --prefix=/usr \
+            --with-shared                   
