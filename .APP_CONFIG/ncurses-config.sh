@@ -28,12 +28,22 @@ sed 's\@alsy.app.name\'$app'\g' Makefile.am > Makefile &&
 mkdir -p ../build &&
 tar -xf $app.$arch -C ../build &&
 cd ../build/$app &&
-./configure $XORG_CONFIG      \
-            --with-termlib    \
-            --enable-widec    \
-            --with-shared     \
-            --with-pthread    \
-            --with-pkg-config \
+
+mkdir build &&
+pushd build
+  ../configure
+  make -C include
+  make -C progs tic
+popd
+
+./configure --prefix=$XORG_PREFIX           \
+            --host=x86_64-alesya-linux      \
+            --build=$(./config.guess)       \
+            --mandir=$XORG_PREFIX/share/man \
+            --with-manpage-format=normal    \
+            --enable-widec                  \
+            --with-shared                   \            
+            --with-pkg-config               \
             --with-pkg-config-libdir=$XORG_PREFIX/lib/pkgconfig  
             
             
