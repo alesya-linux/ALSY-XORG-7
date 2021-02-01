@@ -156,6 +156,9 @@ fi
 
 cp $APP_MAKEFILE/proto-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
 case $packagedir in
+  pkg* )
+    cp -a $APP_CONFIG/pkg-config.sh $APP_COMPILE/$packagedir/config.sh
+  ;;
   bison* )
     cp -r $APP_CONFIG/bison-config.sh $APP_COMPILE/$packagedir/config.sh
     cp -r $APP_MAKEFILE/bison-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
