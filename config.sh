@@ -156,6 +156,10 @@ fi
 
 cp $APP_MAKEFILE/proto-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
 case $packagedir in
+  flex* )
+    cp -r $APP_CONFIG/flex-config.sh $APP_COMPILE/$packagedir/config.sh
+    cp -r $APP_MAKEFILE/flex-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
+  ;;
   bzip2* )
     cp -r $APP_CONFIG/bzip2-config.sh $APP_COMPILE/$packagedir/config.sh
     cp -r $APP_MAKEFILE/bzip2-Makefile.am $APP_COMPILE/$packagedir/Makefile.am

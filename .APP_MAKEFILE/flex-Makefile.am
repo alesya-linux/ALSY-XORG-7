@@ -1,0 +1,10 @@
+#!/bin/make
+app="@alsy.app.name"
+compile:
+	cd ../build/${app} && make
+install:
+	cd ../build/${app} && make install
+	cd ${XORG_PREFIX}/lib && cp libfl.so* /lib
+	ldconfig
+clean:
+	rm -rfd ../build/${app}
