@@ -1,13 +1,13 @@
 #!/bin/bash
 export XORG_PREFIX="/usr/src/tools/XORG-7"
 FLAGSET="X"
-ETAP1_FLAG=" " # This is Flag compile for file XORG-7.md5
-ETAP2_FLAG=" " # This is Flag compile for file app-7.md5 
-ETAP3_FLAG=" " # This is Flag compile for file font-7.md5 
-ETAP4_FLAG=" " # This is Flag compile for file XorgInputDrivers.md5
-ETAP5_FLAG=" " # This is Flag compile for file XorgVideoDrivers.md5
-ETAP6_FLAG=" " # This is Flag compile for file Xorg-Legacy.md5
-ETAP6_WGET_FLAG=" "
+ETAP1_FLAG="X" # This is Flag compile for file XORG-7.md5
+ETAP2_FLAG="X" # This is Flag compile for file app-7.md5 
+ETAP3_FLAG="X" # This is Flag compile for file font-7.md5 
+ETAP4_FLAG="X" # This is Flag compile for file XorgInputDrivers.md5
+ETAP5_FLAG="X" # This is Flag compile for file XorgVideoDrivers.md5
+ETAP6_FLAG="X" # This is Flag compile for file Xorg-Legacy.md5
+ETAP6_WGET_FLAG="X"
 CHECK_MD5SUM_FLAG="X"
 export SOURCE_DATE_EPOCH="$(date +%s)";
 
