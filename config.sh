@@ -276,7 +276,8 @@ case $packagedir in
     cp $APP_CONFIG/data-config.sh $APP_COMPILE/$packagedir/config.sh
   ;;
   zlib* )
-    cp $APP_CONFIG/zlib-config.sh $APP_COMPILE/$packagedir/config.sh
+    cp -a $APP_CONFIG/zlib-config.sh $APP_COMPILE/$packagedir/config.sh
+    cp -a $APP_MAKEFILE/zlib-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
   ;;
 esac
 
