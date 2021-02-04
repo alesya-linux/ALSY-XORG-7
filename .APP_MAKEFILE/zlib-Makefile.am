@@ -4,10 +4,10 @@ compile:
 	cd ../build/${app} && make
 install:
 	cd ../build/${app} && make install
-	cd ${XORG_PREFIX}/lib && cp libz.so* /lib64
-	cd ${XORG_PREFIX}/lib && cp libz.a   /lib64
-	cd ${XORG_PREFIX}/lib && cp libz.so* ${XORG_PREFIX}/lib64	
-	cd ${XORG_PREFIX}/lib && cp libz.a   ${XORG_PREFIX}/lib64
+	cd ${XORG_PREFIX}/lib && cp -rLd libz.so* /lib64
+	cd ${XORG_PREFIX}/lib && cp -rLd libz.a   /lib64
+	cd ${XORG_PREFIX}/lib && cp -rLd libz.so* ${XORG_PREFIX}/lib64
+	cd ${XORG_PREFIX}/lib && cp -rLd libz.a   ${XORG_PREFIX}/lib64
 	ldconfig
 clean:
 	rm -rfd ../build/${app}
