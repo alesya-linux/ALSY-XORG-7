@@ -183,6 +183,10 @@ case $packagedir in
   readline* )
     cp -r $APP_CONFIG/readline-config.sh $APP_COMPILE/$packagedir/config.sh
   ;;
+  expat* )
+    cp $APP_CONFIG/expat-config.sh $APP_COMPILE/$packagedir/config.sh    
+    cp $APP_MAKEFILE/expat-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
+  ;;
   gperf* )
     cp -r $APP_CONFIG/gperf-config.sh $APP_COMPILE/$packagedir/config.sh
   ;;
