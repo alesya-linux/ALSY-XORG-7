@@ -26,8 +26,6 @@ tar -xf "$sapp"."$arch" -C ../build
 if [ $? -eq 0 ]; then
   cd ../build/$sapp
   if [ $? -eq 0 ]; then         
-    ./configure --prefix=$GTK3_PREFIX \
-                --disable-static      \
-                --docdir=$GTK3_PREFIX/share/doc/$sapp
+    ./configure $XORG_CONFIG --docdir=$XORG_PREFIX/share/doc/$sapp
   fi
 fi
