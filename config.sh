@@ -240,6 +240,13 @@ case $packagedir in
   libpng* )
     cp -r $APP_CONFIG/libpng-config.sh $APP_COMPILE/$packagedir/config.sh
   ;;
+  libxml2* )
+    cp $APP_CONFIG/libxml2-config.sh $APP_COMPILE/$packagedir/config.sh    
+    cp $APP_MAKEFILE/libxml2-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
+    if [ -f $APP_PATCHES/libxml2-2.9.10-security_fixes-1.patch ]; then
+      cp $APP_PATCHES/libxml2-2.9.10-security_fixes-1.patch $APP_COMPILE/$packagedir
+    fi
+  ;;
   lib* )
     cp $APP_CONFIG/xorglib-config.sh $APP_COMPILE/$packagedir/config.sh
   ;;
@@ -286,13 +293,6 @@ case $packagedir in
   zlib* )
     cp -a $APP_CONFIG/zlib-config.sh $APP_COMPILE/$packagedir/config.sh
     cp -a $APP_MAKEFILE/zlib-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
-  ;;
-    libxml2* )
-    cp $APP_CONFIG/libxml2-config.sh $APP_COMPILE/$packagedir/config.sh    
-    cp $APP_MAKEFILE/libxml2-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
-    if [ -f $APP_PATCHES/libxml2-2.9.10-security_fixes-1.patch ]; then
-      cp $APP_PATCHES/libxml2-2.9.10-security_fixes-1.patch $APP_COMPILE/$packagedir
-    fi
   ;;
 esac
 
