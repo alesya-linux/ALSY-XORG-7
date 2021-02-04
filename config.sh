@@ -1,5 +1,5 @@
 #!/bin/bash
-export XORG_PREFIX="/usr/src/tools/XORG-7"
+export XORG_PREFIX="/usr/src/tools/ALSY-XORG-7"
 FLAGSET="X"
 ETAP1_FLAG="X" # This is Flag compile for file XORG-7.md5
 ETAP2_FLAG="X" # This is Flag compile for file app-7.md5 
@@ -286,6 +286,13 @@ case $packagedir in
   zlib* )
     cp -a $APP_CONFIG/zlib-config.sh $APP_COMPILE/$packagedir/config.sh
     cp -a $APP_MAKEFILE/zlib-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
+  ;;
+    libxml2* )
+    cp $APP_CONFIG/libxml2-config.sh $APP_COMPILE/$packagedir/config.sh    
+    cp $APP_MAKEFILE/libxml2-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
+    if [ -f $APP_PATCHES/libxml2-2.9.10-security_fixes-1.patch ]; then
+      cp $APP_PATCHES/libxml2-2.9.10-security_fixes-1.patch $APP_COMPILE/$packagedir
+    fi
   ;;
 esac
 

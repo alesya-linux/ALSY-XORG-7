@@ -7,6 +7,9 @@ sapp="$app-$version"
 
 if [ ! -f $sapp.$arch ]; then
   wget http://xmlsoft.org/sources/$sapp.$arch -O $sapp.$arch --no-check-certificate
+  if [ $? -ne 0 ]; then
+    wget ftp://xmlsoft.org/libxml2/$sapp.$arch -O $sapp.$arch --no-check-certificate
+  fi
 fi
 
 sed 's/@alsy.app.name/'$sapp'/g' "Makefile.am" > "Makefile"
