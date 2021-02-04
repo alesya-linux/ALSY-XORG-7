@@ -29,7 +29,7 @@ fi
 mkdir -p $XORG_PREFIX/etc/profile.d/
 
 cat > $XORG_PREFIX/etc/profile.d/xorg.sh << EOF
-ALSY_XORG="1.0.5"
+ALSY_XORG="1.0.6"
 XORG_PREFIX="$XORG_VIRTUAL"
 XORG_CONFIG="\
 --prefix=\$XORG_PREFIX\
