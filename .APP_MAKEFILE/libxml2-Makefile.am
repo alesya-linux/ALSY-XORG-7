@@ -1,0 +1,16 @@
+#!/bin/make
+app="@alsy.app.name"
+INSTALLDIR=${XORG_PREFIX}
+.PHONY:  compile install 
+.IGNORE: clean prepare
+compile:
+	cd ../build/${app} && make 
+install:
+	cd ../build/${app} && make install
+	$(MAKE) prepare
+prepare:
+	cd ${XORG_PREFIX} && rm -rfd include/libxml
+	cd ${XORG_PREFIX} && ln -s ../include/libxml2/libxml include/libxml
+	cd ${XORG_PREFIX} && cp -rLd include/libxml2/* /include
+clean:
+	rm -rd ../build
