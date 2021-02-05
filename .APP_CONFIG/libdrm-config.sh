@@ -39,7 +39,10 @@ if [ $? -eq 0 ]; then
     fi &&
     if [ -x $sapp/configure ]; then    
       ./$sapp/configure $XORG_CONFIG && popd
-    elif [ -f $sapp/meson.build ]; then      
+    elif [ -f $sapp/meson.build ]; then
+      python3 -m pip install -U pip &&
+      python3 -m pip install -U meson &&
+      python3 -m pip install -U ninja &&
       meson --prefix=$XORG_PREFIX $sapp
     fi 
   fi

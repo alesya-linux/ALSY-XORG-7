@@ -8,10 +8,10 @@ b34ada4b7b9528798589d12d332af02c  libcap2-2.46.tar.gz
 a61415312426e9c2212bd7dc7929abda  acl-2.2.52.src.tar.gz
 b0d6e603b814908acc69db29bbfb023c  systemd-247.tar.gz
 bf8ef2482e84a00b5db8fbd3ce00e249  mtdev-1.1.6.tar.bz2
+8cf8bd1f33e3736bc8dd279b20a32399  xorg-server-1.20.10.tar.bz2
 e8bd1edc6751f92e425cae7eba3c61eb  xf86-input-evdev-2.10.6.tar.bz2 
 1fdc670e62a08bcebceabd23af3d639a  libinput-1.16.4.tar.xz
 11dcfa2cc39f790731a9545fcdeea717  xf86-input-libinput-0.30.0.tar.bz2 
 cfb79d3c975151f9bbf30b727c260cb9  xf86-input-synaptics-1.9.1.tar.bz2
 9ee7bf6969002d6cfe9301354a72d7b0  xf86-input-wacom-0.39.0.tar.bz2
-8cf8bd1f33e3736bc8dd279b20a32399  xorg-server-1.20.10.tar.bz2
- 
+
