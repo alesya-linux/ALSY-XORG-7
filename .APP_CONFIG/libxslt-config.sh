@@ -26,7 +26,7 @@ if [ $? -eq 0 ]; then
   cd ../build/$sapp  
   if [ $? -eq 0 ]; then         
     sed -i s/3000/5000/ libxslt/transform.c doc/xsltproc.{1,xml} && 
-    ./configure --prefix=$GTK3_PREFIX \
+    ./configure --prefix=$XORG_PREFIX \
                 --disable-static \
                 --with-history   \
                 --without-python
