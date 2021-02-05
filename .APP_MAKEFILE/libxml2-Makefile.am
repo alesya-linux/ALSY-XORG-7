@@ -7,6 +7,8 @@ compile:
 	cd ../build/${app} && make 
 install:
 	cd ../build/${app} && make install
+	cd ${XORG_PREFIX}/lib && cp -rLd libxml2.so* ${XORG_PREFIX}/lib64
+	cd ${XORG_PREFIX}/lib && cp -rLd libxml2.la  ${XORG_PREFIX}/lib64
 	$(MAKE) prepare
 prepare:
 	cd ${XORG_PREFIX} && rm -rfd include/libxml
