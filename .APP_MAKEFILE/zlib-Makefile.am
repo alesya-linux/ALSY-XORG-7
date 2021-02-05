@@ -1,13 +1,13 @@
 #!/bin/make
 app="@alsy.app.name"
+.PHONY:  compile install
+.IGNORE: clean
 compile:
 	cd ../build/${app} && make
 install:
 	cd ../build/${app} && make install
-	cd ${XORG_PREFIX}/lib && cp -rLd libz.so* /lib64
-	cd ${XORG_PREFIX}/lib && cp -rLd libz.a   /lib64
+	mkdir -p ${XORG_PREFIX}/lib64
 	cd ${XORG_PREFIX}/lib && cp -rLd libz.so* ${XORG_PREFIX}/lib64
 	cd ${XORG_PREFIX}/lib && cp -rLd libz.a   ${XORG_PREFIX}/lib64
-	ldconfig
 clean:
 	rm -rfd ../build/${app}
