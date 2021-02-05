@@ -481,6 +481,10 @@ if [ -f $APP_PACKAGE/$package ]; then
 fi 
 
   case $packagedir in
+  xorg-server* )
+    cp -r $APP_CONFIG/Xorg-Server-config.sh $APP_COMPILE/$packagedir/config.sh
+    cp -r $APP_MAKEFILE/proto-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
+  ;;
   attr* )
     cp -r $APP_CONFIG/attr-config.sh $APP_COMPILE/$packagedir/config.sh
     cp $APP_MAKEFILE/attr-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
