@@ -249,6 +249,11 @@ case $packagedir in
       cp $APP_PATCHES/libxml2-2.9.10-security_fixes-1.patch $APP_COMPILE/$packagedir
     fi
   ;;
+  libxslt* )
+    cp $APP_CONFIG/libxslt-config.sh $APP_COMPILE/$packagedir/config.sh    
+    cp $APP_MAKEFILE/libxslt-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
+    cp $APP_CONFIG/libxslt-install.sh $APP_COMPILE/$packagedir/install.sh
+  ;;
   lib* )
     cp $APP_CONFIG/xorglib-config.sh $APP_COMPILE/$packagedir/config.sh
   ;;
