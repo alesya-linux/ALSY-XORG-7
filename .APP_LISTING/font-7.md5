@@ -9,8 +9,8 @@ bfb2593d2102585f45daa960f43cb3c4  font-ibm-type1-1.0.3.tar.bz2
 3eeb3fb44690b477d510bbd8f86cf5aa  font-xfree86-type1-1.0.4.tar.bz2
 f10b4753dfd8f18036167c1f87c63ee7  xkeyboard-config-2.31.tar.bz2
 73858c0862dd9896fb5f62ae267084a4  pixman-0.40.0.tar.gz
-#0d270c997aff29708c74d53f599ef717  xz-5.2.5.tar.gz
 c6923dda0675f6a4ef21426164dc8b6a  libunwind-1.5.0.tar.gz
 e23c149a4cc494ac1f473f13cca16b67  freefont-otf-20120503.tar.gz
-#XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX  freefont-sfd-20100919.tar.gz.sig
 33d96c755d0a6f585bc917f08cbddf66  freefont-ttf-20100919.tar.gz
+#XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX  freefont-sfd-20100919.tar.gz.sig
+#0d270c997aff29708c74d53f599ef717  xz-5.2.5.tar.gz
