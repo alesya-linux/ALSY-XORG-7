@@ -45,7 +45,8 @@ if [ $? -eq 0 ]; then
                         --with-harfbuzz=yes \
                         --with-bzip2=yes    \
                         --with-png=yes      \
-                        --with-zlib=yes && popd
+                        --with-zlib=yes     \
+                        --enable-freetype-config && popd
 # !!! first install without harfbuzz then when it is installed reinstall freetype !!!    
 # And this is the second installation of freetype using harfbuzz !!!
     fi 

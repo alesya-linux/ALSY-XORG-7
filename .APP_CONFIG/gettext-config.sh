@@ -21,8 +21,6 @@ tar -xf "$sapp"."$arch" -C ../build
 if [ $? -eq 0 ]; then  
   cd ../build/$sapp
   if [ $? -eq 0 ]; then    
-    ./configure $XORG_CONFIG
-
-
+    ./configure $XORG_CONFIG --without-libxml2-prefix
   fi
 fi

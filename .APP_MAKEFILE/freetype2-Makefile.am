@@ -1,0 +1,13 @@
+#!/bin/make
+app="@alsy.app.name"
+compile:
+	cd ../build/${app} && make
+install:
+	cd ../build/${app} && make install
+	cd ${XORG_PREFIX}/lib && cp -rLd libfreetype.so* /lib64
+	cd ${XORG_PREFIX}/lib && cp -rLd libfreetype.la  /lib64
+	cd ${XORG_PREFIX}/lib && cp -rLd libfreetype.so* ${XORG_PREFIX}/lib64
+	cd ${XORG_PREFIX}/lib && cp -rLd libfreetype.la  ${XORG_PREFIX}/lib64
+	ldconfig
+clean:
+	rm -rfd ../build/${app}
