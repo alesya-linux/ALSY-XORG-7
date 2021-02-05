@@ -67,6 +67,7 @@ APP_CONFIG=".APP_CONFIG"
 APP_MAKEFILE=".APP_MAKEFILE"
 APP_COMPILE="build/compile"
 APP_PACKAGE="APP_PACKAGE"
+APP_PATCHES="APP_PATCHES"
 
 echo "Installation Log File: $(date)" > install_log.txt
 
@@ -219,6 +220,7 @@ case $packagedir in
   ;;
   freetype2* )
     cp -r $APP_CONFIG/freetype2-config.sh $APP_COMPILE/$packagedir/config.sh
+    cp -r $APP_MAKEFILE/freetype2-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
   ;;
   harfbuzz* )
     cp -r $APP_CONFIG/harfbuzz-config.sh $APP_COMPILE/$packagedir/config.sh  
