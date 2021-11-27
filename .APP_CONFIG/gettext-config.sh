@@ -1,11 +1,14 @@
 #!/bin/bash
-sapp="gettext-0.20.2"
+sapp="gettext-0.21"
 app="${PWD##*/}"
 version="${app##*-}"
 app="${app%-*}"
 arch="tar.gz"
 
 sed 's/@alsy.app.name/'$sapp'/g' "Makefile.am" > "Makefile"
+if [ ! -f $sapp.$arch ]; then
+  wget https://ftp.gnu.org/pub/gnu/gettext/$sapp.$arch -O $sapp.$arch
+fi
 
 if [ -d ../build/$sapp ]; then
  rm -rd ../build/$sapp
