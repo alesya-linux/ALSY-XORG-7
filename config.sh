@@ -184,6 +184,7 @@ case $packagedir in
   ;;
   readline* )
     cp -r $APP_CONFIG/readline-config.sh $APP_COMPILE/$packagedir/config.sh
+    cp -r $APP_MAKEFILE/readline-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
   ;;
   expat* )
     cp $APP_CONFIG/expat-config.sh $APP_COMPILE/$packagedir/config.sh    
