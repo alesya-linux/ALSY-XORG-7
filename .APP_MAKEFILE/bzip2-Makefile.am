@@ -1,8 +1,14 @@
 #!/bin/make
 app="@alsy.app.name"
 compile:
-	cd ../build/${app}/${app} && export CFLAGS="-g -O2 -fPIC" && make CFLAGS="-g -O2 -fPIC"
+	cd ../build/${app}/${app} && make clean
+	cd ../build/${app}/${app} && make CFLAGS="-g -O2 -fPIC" -f Makefile-libbz2_so
+	cd ../build/${app}/${app} && make clean
+	cd ../build/${app}/${app} && make CFLAGS="-g -O2 -fPIC"
 install:
-	cd ../build/${app}/${app} && make install PREFIX=${XORG_PREFIX}
+	cd ../build/${app}/${app} && make PREFIX=${XORG_PREFIX} install
+	cd ../build/${app}/${app} && cp -v bzip2-shared ${XORG_PREFIX}/bin/bzip2
+	cd ../build/${app}/${app} && cp -av libbz2.so* ${XORG_PREFIX}/lib
+	cd ../build/${app}/${app} && ln -svf libbz2.so.1.0 ${XORG_PREFIX}/lib/libbz2.so
 clean:
 	rm -rfd ../build/${app}
