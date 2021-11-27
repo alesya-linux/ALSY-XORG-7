@@ -33,8 +33,8 @@ c0cbb153e3a79d8780079d1850b2eda8  libfontenc-1.1.4.tar.gz
 718ea44eecfd90d19b5cb15f2081142d  util-linux-2.37.tar.gz
 e812da327b1c2214ac1aed440ea3ae8d  ncurses-6.2.tar.gz
 e9557dd5b1409f5d7b37ef717c64518e  readline-8.1.tar.gz
-bd7e7421ff3fa2e2d5429229ecfad095  pcre2-10.36.tar.bz2
-cf7326204cc46c755b5b2608033d9d24  pcre-8.44.tar.bz2
+4a765b1419c2e7a01263c3260abca87a  pcre2-10.39.tar.bz2
+4452288e6a0eefb2ab11d36010a1eebb  pcre-8.45.tar.bz2
 9e251c0a618ad0824b51117d5d9db87e  gperf-3.1.tar.gz
 bbd8baaf328fc8e906fbb0efc3a5be1e  expat-2.2.10.tar.gz
 10942a1dc23137a8aa07f0639cbfece5  libxml2-2.9.10.tar.gz
