@@ -28,6 +28,7 @@ if [ $? -eq 0 ]; then
   if [ $? -eq 0 ]; then
     ./configure --prefix=$XORG_PREFIX \
                 --disable-static      \
-                --with-internal-glib
+                --with-internal-glib  \
+                --with-libiconv=gnu
   fi
 fi
