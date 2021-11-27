@@ -96,7 +96,7 @@ make_install()
 {
 LASTPATH="$PATH"
 PATH="$SAVEPATH"
-as_root make install
+as_root make XORG_PREFIX=$XORG_PREFIX install
 check_last "make install"
 # Add Log
 Add_Log
@@ -128,7 +128,7 @@ if [ "$CHECK_MD5SUM_FLAG" == "X" ]; then
     MD5SUMFILE="$(md5sum $APPLICATION_SITE/$packagedir/$package)"
   fi
 fi
-make      
+make XORG_PREFIX=$XORG_PREFIX      
 check_last "make"
 make_install
 popd
