@@ -1,0 +1,13 @@
+#!/bin/make
+app="@alsy.app.name"
+.PHONY:  all install clean
+.IGNORE: prepare
+all:
+	cd ../build/${app} && make SHLIB_LIBS="-lncursesw"
+install:
+	$(MAKE) prepare
+	cd ../build/${app} && make SHLIB_LIBS="-lncursesw" install
+prepare:
+	rm -rf ${XORG_PREFIX}/lib/libreadline.so*
+clean:
+	rm -rfd ../build/${app}
