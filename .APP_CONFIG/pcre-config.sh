@@ -1,11 +1,12 @@
 #!/bin/bash
-app="pcre-8.44"
+app="pcre-8.45"
+version="8.45"
 arch="tar.bz2"
 
 sed 's/@alsy.app.name/'$app'/g' "Makefile.am" > "Makefile"
 
    if [ ! -f $app.$arch ]; then
-     filedwnld="ftp://ftp.pcre.org/pub/pcre/$app.$arch"
+     filedwnld="https://sourceforge.net/projects/pcre/files/pcre/$version/$app.$arch"
      wget $filedwnld -O $app.$arch
    fi
    

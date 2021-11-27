@@ -1,11 +1,14 @@
 #!/bin/bash
 
-app="pcre2"
-version="10.36"
+#app="pcre2"
+#version="10.36"
+app="${PWD##*/}"
+version="${app##*-}"
+app="${app%-*}"
 arch="tar.bz2"
 
 if [ ! -f $app-$version.$arch ]; then
-  filedwnld="ftp://ftp.pcre.org/pub/pcre/$app-$version.$arch"
+  filedwnld="https://github.com/PhilipHazel/pcre2/releases/download/$app-$version/$app-$version.$arch"
   wget $filedwnld -O $app-$version.$arch
 fi
 
