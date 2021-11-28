@@ -15,7 +15,7 @@ e1d7dc1afd3ddb8fab16d6a76f21a258  xev-1.2.4.tar.bz2
 90b4305157c2b966d5180e2ee61262be  xgamma-1.0.6.tar.bz2
 a48c72954ae6665e0616f6653636da8c  xhost-1.0.8.tar.bz2
 ac6b7432726008b2f50eba82b0e2dbe4  xinput-1.6.3.tar.bz2
-41d0b6d370f907615364a6330b8f42ff  xkbcomp-1.4.4.tar.bz2
+c45e9f7971a58b8f0faf10f6d8f298c0  xkbcomp-1.4.5.tar.bz2
 c747faf1f78f5a5962419f8bdd066501  xkbevd-1.1.4.tar.bz2
 502b14843f610af977dffc6cbf2102d5  xkbutils-1.0.4.tar.bz2
 938177e4472c346cf031c1aefd8934fc  xkill-1.0.5.tar.bz2
@@ -26,12 +26,12 @@ e50ffae17eeb3943079620cb78f5ce0b  xmessage-1.0.5.tar.bz2
 eaac255076ea351fd08d76025788d9f9  xpr-1.0.5.tar.bz2
 2358e29133d183ff67d4ef8afd70b9d2  xprop-1.2.5.tar.bz2
 fe40f7a4fd39dd3a02248d3e0b1972e4  xrandr-1.5.1.tar.xz
-34ae801ef994d192c70fcce2bdb2a1b2  xrdb-1.2.0.tar.bz2
+85f04a810e2fb6b41ab872b421dce1b1  xrdb-1.2.1.tar.bz2
 c56fa4adbeed1ee5173f464a4c4a61a6  xrefresh-1.0.6.tar.bz2
 70ea7bc7bacf1a124b1692605883f620  xset-1.2.4.tar.bz2
 5fe769c8777a6e873ed1305e4ce2c353  xsetroot-1.1.2.tar.bz2
 b13afec137b9b331814a9824ab03ec80  xvinfo-1.1.4.tar.bz2
-11794a8eba6d295a192a8975287fd947  xwd-1.0.7.tar.bz2
+f783a209f2e3fa13253cedb65eaf9cdb  xwd-1.0.8.tar.bz2
 26d46f7ef0588d3392da3ad5802be420  xwininfo-1.1.5.tar.bz2
 79972093bb0766fcd0223b2bd6d11932  xwud-1.0.5.tar.bz2
 aea14eabf40528ec4db18f1cfcf5c458  xcursor-themes-1.0.6.tar.bz2
