@@ -11,8 +11,8 @@
     +  драйверами ввода (Xorg Input Drivers)
     +  драйверами видео карт (Xorg Video Drivers)
     +  зависимостями такими как например:  
-        mesa-20.3.3, freetype-2.10.4, fontconfig-2.13.1,  
-        harfbuzz-2.7.4, libdrm-2.4.104, libunwind-1.5.0,  
+        mesa-21.2.5, freetype-2.10.4, fontconfig-2.13.1,  
+        harfbuzz-3.1.1, libdrm-2.4.104, libunwind-1.5.0,  
         libpng-1.6.37, zlib-1.2.11 и другими  
     +  чтобы узнать подробнее,  
        смотри списки установки в папке .APP_LISTING:  
