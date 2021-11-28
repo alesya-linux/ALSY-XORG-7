@@ -52,7 +52,7 @@ DRI_DRIVERS="i965,nouveau"
         fi
       fi
       cd $sapp &&
-      patch -Np1 -i ../mesa-20.3.3-add_xdemos-1.patch &&
+      # patch -Np1 -i ../mesa-20.3.3-add_xdemos-1.patch &&
       meson --prefix=$XORG_PREFIX          \
             -Dplatforms=x11                \
             -Dllvm=disabled                \
