@@ -139,8 +139,13 @@ if [ "$ETAP1_FLAG" == "X" ]; then
 COMPILEFILE="$APP_LISTING/XORG-7.md5"
 for package in $(grep -v '^#' $COMPILEFILE | awk '{print $2}')
 do  
-  packagedir=${package%.tar.*}
-  typearchive=${package#*.tar.*}
+  if [ "${package%.tar.*}" != "$package" ]; then
+    packagedir=${package%.tar.*}
+    typearchive=${package#*.tar.*}
+  else
+    packagedir=${package%.tgz}
+    typearchive=${package#*.tgz}
+  fi
   CURRMD5SUM=$(grep -v '^#' $COMPILEFILE | grep $package | cut -d" " -f1)
   
 export ALSY_XORG_APP_CONFIG_ARCHIVE_TYPE="$typearchive"
@@ -158,6 +163,12 @@ fi
 
 cp $APP_MAKEFILE/proto-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
 case $packagedir in
+  libva*)
+    cp -a $APP_CONFIG/libva-config.sh $APP_COMPILE/$packagedir/config.sh
+  ;;
+  graphite2*)
+    cp -a $APP_CONFIG/graphite2-config.sh $APP_COMPILE/$packagedir/config.sh
+  ;;
   pkg* )
     cp -a $APP_CONFIG/pkg-config.sh $APP_COMPILE/$packagedir/config.sh
   ;;
