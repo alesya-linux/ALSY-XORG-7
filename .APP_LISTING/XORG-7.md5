@@ -4,7 +4,7 @@ f6e931e319531b736fadc017f470e68a  pkg-config-0.29.2.tar.gz
 01db30b67b5b315a815eb31d38f7d882  libXau-1.0.9.tar.gz
 4855eb078703d3f9a6692fa67a3eb28a  libXdmcp-1.1.3.tar.gz
 5e9e22d4dfd5b9d499fb5e2f384fbe26  xcb-proto-1.14.1.tar.gz
-fd6cc8ec0a78c44036f825e739f36e5a  Python-2.7.18.tar.xz
+#fd6cc8ec0a78c44036f825e739f36e5a  Python-2.7.18.tar.xz
 8d1285dec5a474236f67f899f99bc147  libxcb-1.14.tar.gz
 0d8fe8de9eb7e733711835d139f906dc  xtrans-1.4.0.tar.gz
 70251fa042404153839d4a4e0789ef11  libX11-1.7.0.tar.gz
@@ -40,7 +40,8 @@ bbd8baaf328fc8e906fbb0efc3a5be1e  expat-2.2.10.tar.gz
 10942a1dc23137a8aa07f0639cbfece5  libxml2-2.9.10.tar.gz
 db8765c8d076f1b6caafd9f2542a304a  libxslt-1.1.34.tar.gz
 36cdea1058ef13cbbfdabe6cb019dc1c  fontconfig-2.13.1.tar.bz2
-6d8393e6fb84edfb15997d1c5ba35b1b  harfbuzz-2.7.4.tar.xz
+1bccb985a7da01092bfb53bb5041e836  graphite2-1.3.14.tgz
+28254bba8ca2f08c0a4fe935def00cbd  harfbuzz-3.1.1.tar.xz
 2dfd73533bb8fb738eee3ea3ccb7e216  libXfont2-2.0.4.tar.gz
 7978e2dee385a40e45513f3cea3f6d2c  libXft-2.3.3.tar.gz
 b64bf95134263fcf8880a9c18021e615  libXi-1.7.10.tar.gz
@@ -64,13 +65,14 @@ ab3940af0bd3d3cc91eb35ecd33a779a  libxshmfence-1.3.tar.gz
 6ac3b17cba51aaaa36ba035a53527214  xcb-util-cursor-0.1.3.tar.bz2
 cedeef095918aca86da79a2934e03daf  xbitmaps-1.1.2.tar.bz2
 d69554c1b51a83f2c6976a640819911b  glproto-1.4.17.tar.gz
-6b23163def82f540e2b5e2873b1c4b92  libdrm-2.4.104.tar.xz
+1cc371b9201b8e68f6f8c061926f6157  libdrm-2.4.108.tar.xz
 f60e47b5eb50bbeed48a9f43bb08dd5e  V3-6-0.tar.gz
 36e9e7e6fffefac1eae5a1a49f14ac4f  libgpg-error-1.41.tar.bz2
 291c40a06d6fc2f285a34f0f0e846325  libgcrypt-1.8.7.tar.bz2
-c4c81cbd8a93f87104d3f1209948b238  mesa-20.3.3.tar.xz
+63ef94beb6677db0c5a43289e7e76ba4  mesa-21.2.5.tar.xz
 516ff05a42157c86e32c6598321737af  libepoxy-1.5.5.tar.xz
 1c9f62f0778697a09d36121ead88e08e  zlib-1.2.11.tar.gz
 015e8e15db1eecde5f2eb9eb5b6e59e9  libpng-1.6.37.tar.xz
 0e6c0e9b218be3ba3e26e1d23b1c80dd  freetype2-2.10.4.tar.xz
+602b7583ebab2a3ee7cfcd8f984b4a81  libva-2.12.0.tar.bz2
 #XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX nettle-3.7.tar.gz
