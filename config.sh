@@ -147,6 +147,11 @@ do
     typearchive=${package#*.tgz}
   fi
   CURRMD5SUM=$(grep -v '^#' $COMPILEFILE | grep $package | cut -d" " -f1)
+
+for ijk1 in $(echo $CURRMD5SUM)
+do
+  CURRMD5SUM=${ijk1}
+done
   
 export ALSY_XORG_APP_CONFIG_ARCHIVE_TYPE="$typearchive"
 if [ ! -d $APP_COMPILE/$packagedir ]; then
