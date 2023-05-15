@@ -40,7 +40,8 @@ if [ $? -eq 0 ]; then
       sed -r "s:.*(#.*SUBPIXEL_RENDERING) .*:\1:" \
       -i $sapp/include/freetype/config/ftoption.h  &&
       ./$sapp/configure $XORG_CONFIG \
-      --without-harfbuzz && popd    
+      --without-harfbuzz \
+      --enable-freetype-config && popd    
 # !!! first install without harfbuzz then when it is installed reinstall freetype !!!          
 ## This is the first installation of freetype !!!
     fi 
