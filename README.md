@@ -75,21 +75,21 @@
   +  glibc - той версии которая использовалась при выполнении скриптов установки
 
 * Установка модулей для Python
-Для примера:
-sudo python3 -m pip install -U pip
-sudo python3 -m pip install -U ninja
-sudo python3 -m pip install -U meson
-sudo python3 -m pip install -U pyaml
+  + Для примера:
+  + sudo python3 -m pip install -U pip
+  + sudo python3 -m pip install -U ninja
+  + sudo python3 -m pip install -U meson
+  + sudo python3 -m pip install -U pyaml
 
 * Установка модулей Perl
-Для примера:
-sudo perl -MCPAN -e 'install XML::Parser'
-sudo perl -MCPAN -e 'install YAML::XS'
+  + Для примера:
+  + sudo perl -MCPAN -e 'install XML::Parser'
+  + sudo perl -MCPAN -e 'install YAML::XS'
 
 * Если у вас чистый Python3 без модуля pip и setuptools
-Сначала скачиваем исходники setuptools потом pip
-1. Распаковываем setuptools
-2. Находясь внутри вып команду: 
-  python3 setup.py build
-  sudo python3 setup.py install
-Затем п.1. п.2. выполняем так же для pip
+  + Сначала скачиваем исходники setuptools потом pip
+  + 1. Распаковываем setuptools
+  + 2. Находясь внутри вып команду: 
+  + python3 setup.py build
+  + sudo python3 setup.py install
+  + Затем п.1. п.2. выполняем так же для pip
