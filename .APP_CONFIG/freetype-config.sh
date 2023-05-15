@@ -24,26 +24,25 @@ if [ -d ../build/$app ]; then
 fi
 
 mkdir -p ../build/$app &&
-tar -xf "$app"."$arch" --strip-components=2 -C ../build/$app
+tar -xf "$app"."$arch" -C ../build/$app
 if [ $? -eq 0 ]; then  
   cd ../build
   if [ $? -eq 0 ]; then    
-    pushd $app &&    
-  #  if [[ -f $sapp/configure.ac && ! -x $sapp/configure ]]; then
-  #    cd $sapp   &&
-  #    libtoolize && 
-  #    autoreconf -fiv &&
-  #    cd ..
- #   fi &&
-    if [ -x $sapp/configure ]; then    
-      sed -ri "s:.*(AUX_MODULES.*valid):\1:" $sapp/modules.cfg &&
-      sed -r "s:.*(#.*SUBPIXEL_RENDERING) .*:\1:" \
-      -i $sapp/include/freetype/config/ftoption.h  &&
-      ./$sapp/configure $XORG_CONFIG \
-      --without-harfbuzz \
-      --enable-freetype-config && popd    
+    pushd $app    
+    cmake -DCMAKE_INSTALL_PREFIX=$XORG_PREFIX  \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DBUILD_SHARED_LIBS=ON \
+            -DFT_DISABLE_ZLIB=TRUE \
+            -DFT_DISABLE_BZIP2=TRUE \
+            -DFT_DISABLE_PNG=TRUE \
+            -DFT_DISABLE_HARFBUZZ=TRUE \
+            -DCMAKE_INSTALL_LIBDIR=lib \
+            $sapp
+    exitcode="$(echo $?)"
+    exit $exitcode
+    
+    popd
 # !!! first install without harfbuzz then when it is installed reinstall freetype !!!          
-## This is the first installation of freetype !!!
-    fi 
+## This is the first installation of freetype !!!    
   fi
 fi
