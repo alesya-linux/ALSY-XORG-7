@@ -24,18 +24,21 @@ if [ -d ../build/$app ]; then
 fi
 
 mkdir -p ../build/$app &&
-tar -xf "$app"."$arch" -C ../build/$app
+tar -xf "$app"."$arch" --strip-components=2 -C ../build/$app
 if [ $? -eq 0 ]; then  
   cd ../build
   if [ $? -eq 0 ]; then    
     pushd $app &&    
-    if [[ -f $sapp/configure.ac && ! -x $sapp/configure ]]; then
-      cd $sapp   &&
-      libtoolize && 
-      autoreconf -fiv &&
-      cd ..
-    fi &&
+  #  if [[ -f $sapp/configure.ac && ! -x $sapp/configure ]]; then
+  #    cd $sapp   &&
+  #    libtoolize && 
+  #    autoreconf -fiv &&
+  #    cd ..
+ #   fi &&
     if [ -x $sapp/configure ]; then    
+      sed -ri "s:.*(AUX_MODULES.*valid):\1:" $sapp/modules.cfg &&
+      sed -r "s:.*(#.*SUBPIXEL_RENDERING) .*:\1:" \
+      -i $sapp/include/freetype/config/ftoption.h  &&
       ./$sapp/configure $XORG_CONFIG \
       --without-harfbuzz && popd    
 # !!! first install without harfbuzz then when it is installed reinstall freetype !!!          
