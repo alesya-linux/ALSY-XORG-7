@@ -88,8 +88,8 @@
 
 * Если у вас чистый Python3 без модуля pip и setuptools
   + Сначала скачиваем исходники setuptools потом pip
-  + 1. Распаковываем setuptools
-  + 2. Находясь внутри вып команду: 
+  + 1 Распаковываем setuptools
+  + 2 Находясь внутри вып команду: 
   + python3 setup.py build
   + sudo python3 setup.py install
   + Затем п.1. п.2. выполняем так же для pip
