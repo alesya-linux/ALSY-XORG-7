@@ -171,6 +171,7 @@ cp $APP_MAKEFILE/proto-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
 case $packagedir in
   libva*)
     cp -a $APP_CONFIG/libva-config.sh $APP_COMPILE/$packagedir/config.sh
+    cp -r $APP_MAKEFILE/libva-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
   ;;
   graphite2*)
     cp -a $APP_CONFIG/graphite2-config.sh $APP_COMPILE/$packagedir/config.sh
@@ -252,11 +253,11 @@ case $packagedir in
   ;;
   libdrm* )
     cp -r $APP_CONFIG/libdrm-config.sh $APP_COMPILE/$packagedir/config.sh
-    cp -r $APP_MAKEFILE/meson-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
+    cp -r $APP_MAKEFILE/libdrm-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
   ;;
   libepoxy* )
     cp -r $APP_CONFIG/libepoxy-config.sh $APP_COMPILE/$packagedir/config.sh
-    cp -r $APP_MAKEFILE/meson-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
+    cp -r $APP_MAKEFILE/libepoxy-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
   ;;
   libpng* )
     cp -r $APP_CONFIG/libpng-config.sh $APP_COMPILE/$packagedir/config.sh
@@ -293,7 +294,7 @@ case $packagedir in
   ;;  
   mesa* )
     cp $APP_CONFIG/mesa-config.sh $APP_COMPILE/$packagedir/config.sh
-    cp -r $APP_MAKEFILE/meson-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
+    cp -r $APP_MAKEFILE/mesa-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
   ;;
   randr* )
     cp $APP_CONFIG/proto-config.sh $APP_COMPILE/$packagedir/config.sh
