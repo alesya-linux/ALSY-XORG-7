@@ -39,9 +39,7 @@ if [ $? -eq 0 ]; then
             -DCMAKE_INSTALL_LIBDIR=lib64 \
             $sapp
     exitcode="$(echo $?)"
-    exit $exitcode
-    
-    popd
+    popd && exit $exitcode    
 # !!! first install without harfbuzz then when it is installed reinstall freetype !!!          
 ## This is the first installation of freetype !!!    
   fi
