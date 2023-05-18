@@ -36,7 +36,7 @@ if [ $? -eq 0 ]; then
             -DFT_DISABLE_BZIP2=TRUE \
             -DFT_DISABLE_PNG=TRUE \
             -DFT_DISABLE_HARFBUZZ=TRUE \
-            -DCMAKE_INSTALL_LIBDIR=lib \
+            -DCMAKE_INSTALL_LIBDIR=lib64 \
             $sapp
     exitcode="$(echo $?)"
     exit $exitcode
