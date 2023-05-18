@@ -30,8 +30,7 @@ tar -xf "$app"."$arch" -C ../build/$app
 if [ $? -eq 0 ]; then  
   cd ../build
   if [ $? -eq 0 ]; then    
-    pushd $app    
-    
+    pushd $app
     cmake -DCMAKE_INSTALL_PREFIX=$XORG_PREFIX  \
             -DCMAKE_BUILD_TYPE=Release \
             -DBUILD_SHARED_LIBS=ON \
