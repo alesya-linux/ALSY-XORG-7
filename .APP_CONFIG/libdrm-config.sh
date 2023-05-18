@@ -43,7 +43,13 @@ if [ $? -eq 0 ]; then
       python3 -m pip install -U pip &&
       python3 -m pip install -U meson &&
       python3 -m pip install -U ninja &&
-      meson --prefix=$XORG_PREFIX $sapp
+      cd $sapp &&
+      meson setup \
+      --prefix=$XORG_PREFIX \
+      --buildtype=release   \
+      -Dudev=true           \
+      -Dvalgrind=false      \
+      build
     fi 
   fi
 fi
