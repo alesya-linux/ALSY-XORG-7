@@ -28,15 +28,11 @@ tar -xf "$app"."$arch" -C ../build/$app
 if [ $? -eq 0 ]; then  
   cd ../build
   if [ $? -eq 0 ]; then    
-    pushd $app &&    
-    if [[ -f $sapp/configure.ac && ! -x $sapp/configure ]]; then
-      cd $sapp   &&
-      libtoolize && 
-      autoreconf -fiv &&
-      cd ..
-    fi &&
-    if [ -x $sapp/configure ]; then    
-      ./$sapp/configure $XORG_CONFIG && popd
-    fi 
+    pushd $app/$sapp
+    meson setup \
+    --prefix=${XORG_PREFIX} \
+    -Dwith_glx=no           \
+    build
+    popd
   fi
 fi
