@@ -51,23 +51,21 @@ DRI_DRIVERS="i965,nouveau"
           exit 1
         fi
       fi
+      
+      export LLVM_CONFIG=$(which llvm-config)
+      echo LLVM_CONFIG=${LLVM_CONFIG}
+      
       cd $sapp &&
       # patch -Np1 -i ../mesa-20.3.3-add_xdemos-1.patch &&
-      meson --prefix=$XORG_PREFIX          \
-            -Dplatforms=x11                \
-            -Dllvm=disabled                \
-            -Dshared-llvm=disabled         \
-            -Dgallium-nine=false           \
-            -Dosmesa=false                 \
-            -Dvulkan-drivers=              \
-            -Dglx=dri                      \
-            -Dgallium-drivers=$GALLIUM_DRV \
-            -Ddri-drivers=$DRI_DRIVERS     \
-            -Dshared-swr=false             \
-            -Dvalgrind=disabled            \
-            -Dlibunwind=disabled ..         
-#      -Dbuildtype=release            \      
-#      $sapp
+      meson setup \
+      --prefix=$XORG_PREFIX  \
+      -Dbuildtype=release    \
+      -Dplatforms=x11        \
+      -Dgallium-drivers=auto \
+      -Dvulkan-drivers=""    \
+      -Dvalgrind=disabled    \
+      -Dlibunwind=disabled   \
+      build
     fi 
   fi
 fi
