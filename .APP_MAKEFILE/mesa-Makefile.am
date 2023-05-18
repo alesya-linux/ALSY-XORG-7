@@ -1,0 +1,8 @@
+#!/bin/make
+app="@alsy.app.name"
+compile:
+	cd ../build/${app}/${app}/build && ninja
+install:
+	cd ../build/${app}/${app}/build && ninja install
+clean:
+	rm -rfd ../build/${app}
