@@ -65,7 +65,7 @@ ab3940af0bd3d3cc91eb35ecd33a779a  libxshmfence-1.3.tar.gz
 6ac3b17cba51aaaa36ba035a53527214  xcb-util-cursor-0.1.3.tar.bz2
 cedeef095918aca86da79a2934e03daf  xbitmaps-1.1.2.tar.bz2
 d69554c1b51a83f2c6976a640819911b  glproto-1.4.17.tar.gz
-1cc371b9201b8e68f6f8c061926f6157  libdrm-2.4.108.tar.xz
+5403981a20c964f4c893ff91393652bd  libdrm-2.4.115.tar.xz
 f60e47b5eb50bbeed48a9f43bb08dd5e  V3-6-0.tar.gz
 36e9e7e6fffefac1eae5a1a49f14ac4f  libgpg-error-1.41.tar.bz2
 291c40a06d6fc2f285a34f0f0e846325  libgcrypt-1.8.7.tar.bz2
@@ -74,5 +74,5 @@ f60e47b5eb50bbeed48a9f43bb08dd5e  V3-6-0.tar.gz
 1c9f62f0778697a09d36121ead88e08e  zlib-1.2.11.tar.gz
 015e8e15db1eecde5f2eb9eb5b6e59e9  libpng-1.6.37.tar.xz
 0e6c0e9b218be3ba3e26e1d23b1c80dd  freetype2-2.10.4.tar.xz
-602b7583ebab2a3ee7cfcd8f984b4a81  libva-2.12.0.tar.bz2
+602b7583ebab2a3ee7cfcd8f984b4a81  libva-2.18.0.tar.bz2
 #XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX nettle-3.7.tar.gz
