@@ -6,7 +6,8 @@ arch="tar.${ALSY_XORG_APP_CONFIG_ARCHIVE_TYPE}"
 sapp="$app-$version"
 
 if [ ! -f $sapp.$arch ]; then
-  wget http://xmlsoft.org/sources/$sapp.$arch -O $sapp.$arch --no-check-certificate
+#  wget http://xmlsoft.org/sources/$sapp.$arch -O $sapp.$arch --no-check-certificate
+  wget https://download.gnome.org/sources/libxslt/1.1/$sapp.$arch -O $sapp.$arch --no-check-certificate
 fi
 
 sed 's/@alsy.app.name/'$sapp'/g' "Makefile.am" > "Makefile"
