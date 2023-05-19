@@ -5,5 +5,6 @@ compile:
 install:
 	cd ../build/${app} && make install
 	./install.sh ${XORG_PREFIX}
+	cp -av ${XORG_PREFIX}/lib/libpam.so.0 ${XORG_PREFIX}/lib/libpam.so
 clean:
 	rm -rfd ../build/${app}
