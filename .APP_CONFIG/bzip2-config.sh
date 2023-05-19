@@ -7,7 +7,7 @@ arch="tar.${ALSY_XORG_APP_CONFIG_ARCHIVE_TYPE}"
 sapp="$app-$version"
 
 if [ ! -f $app-$version.$arch ]; then  
-  filedwnld="http://www.bzip.org/1.0.6/bzip2-1.0.6.tar.gz"
+  filedwnld="https://github.com/libarchive/bzip2/archive/refs/tags/$app-$version.tar.gz"
   wget $filedwnld -O "$app-$version".$arch --no-check-certificate
 fi
 
@@ -24,7 +24,7 @@ if [ -d ../build/$app ]; then
 fi
 
 mkdir -p ../build/$app &&
-tar -xf "$app"."$arch" -C ../build/$app
+tar -xf "$app"."$arch" -C ../build/$app || rm -f "$app"."$arch"
 if [ $? -eq 0 ]; then  
   cd ../build
   if [ $? -eq 0 ]; then    
