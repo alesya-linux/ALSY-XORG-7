@@ -11,6 +11,8 @@ ETAP6_WGET_FLAG="X"
 CHECK_MD5SUM_FLAG="X"
 export SOURCE_DATE_EPOCH="$(date +%s)";
 
+gcc_version=$(gcc --version | grep "gcc (GCC)" | cut -d " " -f3)
+
 if [ "$( echo $1 | sed 's/--prefix=//' )" != ""  ]; then
   export XORG_PREFIX="$( echo $1 | sed 's/--prefix=//' )"  
 fi
@@ -51,7 +53,7 @@ C_INCLUDE_PATH=""
 CPLUS_INCLUDE_PATH=""
 LIBRARY_PATH="$XORG_PREFIX/lib:$LIBRARY_PATH"
 C_INCLUDE_PATH="$XORG_PREFIX/include:$C_INCLUDE_PATH"
-CPLUS_INCLUDE_PATH="/include/c++/11.2.0:$XORG_PREFIX/include:$CPLUS_INCLUDE_PATH"
+CPLUS_INCLUDE_PATH="/include/c++/${gcc_version}:$XORG_PREFIX/include:$CPLUS_INCLUDE_PATH"
 ACLOCAL="aclocal -I $XORG_PREFIX/share/aclocal"
 export ACLOCAL LIBRARY_PATH C_INCLUDE_PATH CPLUS_INCLUDE_PATH
 export XORGPREFIX="$XORG_PREFIX"
