@@ -43,13 +43,14 @@ if [ $? -eq 0 ]; then
       ./$sapp/configure $XORG_CONFIG && popd
     else
       cd $sapp &&
-      meson --prefix=$XORG_PREFIX  \
-             -Dudev-dir=/lib/udev  \
-             -Ddebug-gui=false     \
-             -Dtests=false         \
-             -Ddocumentation=false \
-             -Dlibwacom=false      \
-             ..
+      meson setup \
+      --prefix=$XORG_PREFIX  \
+      -Dudev-dir=/lib/udev   \
+      -Ddebug-gui=false      \
+      -Dtests=false          \
+      -Ddocumentation=false  \
+      -Dlibwacom=false       \
+      build
     fi 
   fi
 else
