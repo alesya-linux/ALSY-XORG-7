@@ -70,6 +70,7 @@
   +  GNU Awk >= 3.1.8
   +  GNU sed version 4.2.1 or newer
   +  GNU coreutils >= 8.21
+  +  CMAKE (https://cmake.org/download/)
  
 * Зависимости установленного XORG-7
   +  glibc - той версии которая использовалась при выполнении скриптов установки
