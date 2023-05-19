@@ -5,3 +5,6 @@ collect2: error: ld returned 1 exit status"
 при конфигурации последнего была указана опция stack-protector-strong
 решение: заменил пакет binutils-2.37 на binutils-2.35 который у меня был и в котором конфигурация была сделана без этой опции
 ошибка исчезла
+
+В файл include/xorg/xf86Opt.h необходимо добавить строку:
+#include <stdbool.h>
