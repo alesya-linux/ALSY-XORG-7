@@ -240,7 +240,7 @@ case $packagedir in
   freetype2* )
     cp -r $APP_CONFIG/freetype2-config.sh $APP_COMPILE/$packagedir/config.sh
     cp -r $APP_MAKEFILE/freetype2-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
-    ln -svf freetype-2.10.4.tar.xz $APP_COMPILE/$packagedir/$package
+    ln -svf freetype-2.13.0.tar.xz $APP_COMPILE/$packagedir/$package
   ;;
   harfbuzz* )
     cp -r $APP_CONFIG/harfbuzz-config.sh $APP_COMPILE/$packagedir/config.sh  
