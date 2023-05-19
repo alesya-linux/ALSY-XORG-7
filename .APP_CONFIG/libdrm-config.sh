@@ -48,7 +48,7 @@ if [ $? -eq 0 ]; then
       --prefix=$XORG_PREFIX \
       --buildtype=release   \
       -Dudev=true           \
-      -Dvalgrind=false      \
+      -Dvalgrind=disabled   \
       build
     fi 
   fi
