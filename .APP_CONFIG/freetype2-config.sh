@@ -26,7 +26,7 @@ if [ -d ../build/$app ]; then
 fi
 
 mkdir -p ../build/$app &&
-tar -xf "$app"."$arch" -C ../build/$app
+tar -xf "$app"."$arch" -C ../build/$app || rm -f "$app"."$arch"
 if [ $? -eq 0 ]; then  
   cd ../build
   if [ $? -eq 0 ]; then    
