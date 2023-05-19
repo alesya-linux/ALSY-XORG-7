@@ -28,7 +28,8 @@ tar -xf "$app"."$arch" -C ../build/$app || rm -f "$app"."$arch"
 if [ $? -eq 0 ]; then  
   cd ../build
   if [ $? -eq 0 ]; then    
-    pushd $app &&    
+    pushd $app
+    mv bzip2-$sapp $sapp
     if [[ -f $sapp/configure.ac && ! -x $sapp/configure ]]; then
       cd $sapp   &&
       libtoolize && 
@@ -36,9 +37,10 @@ if [ $? -eq 0 ]; then
       cd ..
     fi &&
     if [ -x $sapp/configure ]; then    
-      ./$sapp/configure $XORG_CONFIG && popd
+      ./$sapp/configure $XORG_CONFIG
     elif [ -f $sapp/meson.build ]; then      
       meson --prefix=$XORG_PREFIX $sapp
     fi 
+    popd 
   fi
 fi
