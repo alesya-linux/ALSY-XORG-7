@@ -1,5 +1,6 @@
 #!/bin/make
 app="@alsy.app.name"
+pam="PAM_CAP=no"
 compile:
 	cd ../build/${app}/${app} && make ${pam}
 install:
