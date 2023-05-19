@@ -23,7 +23,7 @@ if [ -d ../build/$app ]; then
  fi
 fi
 
-python -m pip install -U ninja
+#python -m pip install -U ninja
 
 mkdir -p ../build/$app &&
 tar -xf "$app"."$arch" -C ../build/$app
