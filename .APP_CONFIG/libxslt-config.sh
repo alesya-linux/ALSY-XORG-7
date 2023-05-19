@@ -22,7 +22,7 @@ if [ -d ../build/$sapp ]; then
 fi
 
 mkdir -p ../build &&
-tar -xf "$sapp"."$arch" -C ../build
+tar -xf "$sapp"."$arch" -C ../build || rm -f "$sapp"."$arch"
 if [ $? -eq 0 ]; then  
   cd ../build/$sapp  
   if [ $? -eq 0 ]; then         
