@@ -38,7 +38,7 @@ e9557dd5b1409f5d7b37ef717c64518e  readline-8.1.tar.gz
 9e251c0a618ad0824b51117d5d9db87e  gperf-3.1.tar.gz
 bbd8baaf328fc8e906fbb0efc3a5be1e  expat-2.2.10.tar.gz
 10942a1dc23137a8aa07f0639cbfece5  libxml2-2.9.10.tar.gz
-db8765c8d076f1b6caafd9f2542a304a  libxslt-1.1.34.tar.gz
+db8765c8d076f1b6caafd9f2542a304a  libxslt-1.1.34.tar.xz
 36cdea1058ef13cbbfdabe6cb019dc1c  fontconfig-2.13.1.tar.bz2
 1bccb985a7da01092bfb53bb5041e836  graphite2-1.3.14.tgz
 28254bba8ca2f08c0a4fe935def00cbd  harfbuzz-3.1.1.tar.xz
