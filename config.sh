@@ -547,7 +547,7 @@ fi
   ;;
   libinput* )
     cp -r $APP_CONFIG/libinput-config.sh $APP_COMPILE/$packagedir/config.sh
-    cp -r $APP_MAKEFILE/meson-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
+    cp -r $APP_MAKEFILE/libinput-Makefile.am $APP_COMPILE/$packagedir/Makefile.am
   ;;
   libcap1* )
     echo "---------------$APP_CONFIG"
