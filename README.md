@@ -87,7 +87,7 @@
   + sudo perl -MCPAN -e 'install XML::Parser'
   + sudo perl -MCPAN -e 'install YAML::XS'
 
-* Если у вас чистый Python3 без модуля pip и setuptools
+* Если у вас чистый Python3 без модуля pip и setuptools (https://pypi.org/)
   + Сначала скачиваем исходники setuptools потом pip
   + 1 Распаковываем setuptools
   + 2 Находясь внутри вып команду: 
