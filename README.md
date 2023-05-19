@@ -71,6 +71,7 @@
   +  GNU sed version 4.2.1 or newer
   +  GNU coreutils >= 8.21
   +  CMAKE >= 3.21 (https://cmake.org/download/) - for source code https://github.com/Kitware/CMake/tags
+  +  sudo > 1.8 (https://www.sudo.ws/getting/download/)
  
 * Зависимости установленного XORG-7
   +  glibc - той версии которая использовалась при выполнении скриптов установки
