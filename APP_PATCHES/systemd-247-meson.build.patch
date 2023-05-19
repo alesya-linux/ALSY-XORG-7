@@ -1,0 +1,11 @@
+--- systemd-247/systemd-247/meson.build	2023-05-19 13:49:41.664930514 +0000
++++ systemd-247/meson.build	2020-11-26 18:00:50.000000000 +0000
+@@ -43,7 +43,7 @@
+ 
+ want_ossfuzz = get_option('oss-fuzz')
+ want_libfuzzer = get_option('llvm-fuzz')
+-if want_ossfuzz + want_libfuzzer > 1
++if want_ossfuzz.to_int() + want_libfuzzer.to_int() > 1
+         error('only one of oss-fuzz or llvm-fuzz can be specified')
+ endif
+ 
