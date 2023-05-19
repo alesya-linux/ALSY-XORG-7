@@ -38,7 +38,7 @@ if [ $? -eq 0 ]; then
     if [ -x $sapp/configure ]; then    
       ./$sapp/configure $XORG_CONFIG && popd
     elif [ -f $sapp/meson.build ]; then      
-      pushad $sapp
+      pushd $sapp
       meson setup \
       --prefix=$XORG_PREFIX \
       build
