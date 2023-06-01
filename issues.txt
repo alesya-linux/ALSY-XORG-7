@@ -8,3 +8,33 @@ collect2: error: ld returned 1 exit status"
 
 В файл include/xorg/xf86Opt.h необходимо добавить строку:
 #include <stdbool.h>
+
+
+Настройка соед по SSH c github.com:
+
+0. Проверка наличия существующих ключей SSH
+$ ls -al ~/.ssh
+
+1. Создание нового ключа:
+$ ssh-keygen -t ed25519 -C "your_email@example.com"
+
+2. Запустите агент SSH в фоновом режиме
+$ eval "$(ssh-agent -s)"
+
+3. Добавьте закрытый ключ SSH в ssh-agent.
+$ ssh-add ~/.ssh/id_ed25519
+
+4. Проверка добавления ключа SSH в ssh-agent.
+$ ssh-add -l -E sha256
+или
+$ ssh-add -l
+или (Если вы используете OpenSSH 6.8 или более ранней версии:)
+$ ssh-add -l -E md5
+
+5. Проверка соед с github.com
+$ ssh -vT git@github.com
+
+6. Скопируйте открытый ключ SSH в буфер обмена.
+$ cat ~/.ssh/id_ed25519.pub
+
+7. На сайте GitHub добавьте открытый ключ SSH ( настройки - > SSH и ключи GPG )
